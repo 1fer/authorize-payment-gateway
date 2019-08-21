@@ -87,17 +87,10 @@ if ( !class_exists( 'PGA_Plugin_SubPanel' ) ) {
          */
         public function add_setting_page() {
             global $admin_page_hooks;
-            $logo = yith_plugin_fw_get_default_logo();
-
-            $admin_logo = function_exists( 'yit_get_option' ) ? yit_get_option( 'admin-logo-menu' ) : '';
-
-            if ( isset( $admin_logo ) && !empty( $admin_logo ) && $admin_logo != '' && $admin_logo ) {
-                $logo = $admin_logo;
-            }
 
             if ( !isset( $admin_page_hooks[ 'yith_plugin_panel' ] ) ) {
                 $position = apply_filters( 'yit_plugins_menu_item_position', '62.32' );
-                add_menu_page( 'yith_plugin_panel', 'YITH', 'nosuchcapability', 'yith_plugin_panel', null, $logo, $position );
+                add_menu_page( 'yith_plugin_panel', 'YITH', 'nosuchcapability', 'yith_plugin_panel', null, null, $position );
                 $admin_page_hooks[ 'yith_plugin_panel' ] = 'yith-plugins'; // prevent issues for backward compatibility
             }
 

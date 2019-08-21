@@ -1231,17 +1231,6 @@ if( ! function_exists( 'yith_plugin_fw_gutenberg_get_to_register_blocks' ) ){
 	}
 }
 
-if( ! function_exists( 'yith_plugin_fw_get_default_logo' ) ){
-	/**
-	 * Get the default SVG logo
-	 *
-	 * @return string default logo image url
-	 */
-	function yith_plugin_fw_get_default_logo(){
-		return PGA_CORE_PLUGIN_URL . '/assets/images/yith-icon.svg';
-	}
-}
-
 if ( ! function_exists( 'yith_set_wrapper_class' ) ) {
 	/**
 	 * Return the class for the new plugin panel style.

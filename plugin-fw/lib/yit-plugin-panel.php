@@ -161,7 +161,7 @@ if ( !class_exists( 'PGA_Plugin_Panel' ) ) {
 
                 //  YITH text must not be translated
                 if ( !!$show ) {
-                    add_menu_page( 'yith_plugin_panel', 'YITH', $capability, 'yith_plugin_panel', null, yith_plugin_fw_get_default_logo(), $position );
+                    add_menu_page( 'yith_plugin_panel', 'Payment Gateway', $capability, 'yith_plugin_panel', null, null, $position );
                     $admin_page_hooks[ 'yith_plugin_panel' ] = 'yith-plugins'; // prevent issues for backward compatibility
                 }
             }

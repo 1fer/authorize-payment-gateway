@@ -96,7 +96,7 @@ if( ! class_exists( 'PG_Dashboard' ) ){
 					//add_thickbox();
 					$output .= ' - ';
 					$output .= sprintf( '<a class="yith-last-changelog" href="#" data-changelogid="%s" data-plugininfo="%s">%s</a>', $last_update->get_id( true ), $last_update->get_title(), _x( 'View Changelog', 'Plugin FW', 'yith-plugin-fw' ) );
-					$output .= sprintf( '<div style="display: none;" id="%s"><div style="display: table;"><img class="yith-feeds-logo" src="%s" /><h3 class="yith-feeds-plugin-name"><span style="font-weight: normal;">%s</span> %s</h3></div><p>%s</p></div>', $last_update->get_id( true ), yith_plugin_fw_get_default_logo(), _x( 'Latest update released on', 'Plugin FW', 'yith-plugin-fw' ), $date_i18n, $changelog );
+					$output .= sprintf( '<div style="display: none;" id="%s"><div style="display: table;"><img class="yith-feeds-logo" src="%s" /><h3 class="yith-feeds-plugin-name"><span style="font-weight: normal;">%s</span> %s</h3></div><p>%s</p></div>', $last_update->get_id( true ), null, _x( 'Latest update released on', 'Plugin FW', 'yith-plugin-fw' ), $date_i18n, $changelog );
 				}
 
 				$output .= '</li>';
