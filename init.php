@@ -27,7 +27,7 @@ if ( ! defined( 'PG_WCAUTHNET' ) ) {
 }
 
 if( ! defined( 'PG_WCAUTHNET_VERSION' ) ){
-	define( 'PG_WCAUTHNET_VERSION', '1.1.12' );
+	define( 'PG_WCAUTHNET_VERSION', '1.0.0' );
 }
 
 if ( ! defined( 'PG_WCAUTHNET_URL' ) ) {
