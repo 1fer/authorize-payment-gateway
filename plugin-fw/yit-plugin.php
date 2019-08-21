@@ -28,7 +28,6 @@ include_once( 'lib/yit-ajax.php' );
 include_once( 'lib/yit-plugin-subpanel.php' );
 include_once( 'lib/yit-plugin-common.php' );
 include_once( 'lib/yit-plugin-gradients.php');
-include_once( 'lib/yit-plugin-licence.php');
 include_once( 'lib/yit-theme-licence.php');
 include_once( 'lib/yit-video.php');
 include_once( 'lib/yit-upgrade.php');
@@ -40,7 +39,6 @@ include_once( 'lib/yith-dashboard.php' );
 include_once( 'lib/privacy/yit-privacy.php' );
 include_once( 'lib/privacy/yit-privacy-plugin-abstract.php' );
 include_once( 'lib/promo/yith-promo.php' );
-include_once( 'lib/yith-system-status.php' );
 
 /* === Gutenberg Support === */
 if( class_exists( 'WP_Block_Type_Registry' ) ){

@@ -1335,7 +1335,6 @@ if( ! function_exists( 'yith_plugin_fw_load_update_and_licence_files' ) ){
 			if( file_exists( $plugin_upgrade_path ) ){
 				$required_files = array(
 					$plugin_upgrade_path . '/lib/yit-licence.php',
-					$plugin_upgrade_path . '/lib/yit-plugin-licence.php',
 					$plugin_upgrade_path . '/lib/yit-theme-licence.php',
 					$plugin_upgrade_path . '/lib/yit-plugin-upgrade.php'
 				);

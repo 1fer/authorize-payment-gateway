@@ -324,30 +324,6 @@ if ( !class_exists( 'PGA_Plugin_Panel' ) ) {
         }
 
         /**
-         * Add Premium Version upgrade menu item
-         *
-         * @return   void
-	     * @since  1.0
-         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
-         */
-        public function add_premium_version_upgrade_to_menu() {
-            /* === Add the How To menu item only if the customer haven't a premium version enabled === */
-            if ( function_exists( 'PGA_Plugin_Licence' ) && !!PGA_Plugin_Licence()->get_products() ) {
-                return;
-            }
-
-            global $submenu;
-            if ( apply_filters( 'yit_show_upgrade_to_premium_version', isset( $submenu[ 'yith_plugin_panel' ] ) ) ) {
-                $submenu[ 'yith_plugin_panel' ][ 'how_to' ] = array(
-                    sprintf( '%s%s%s', '<span id="yith-how-to-premium">', __( 'How to install premium version', 'yith-plugin-fw' ), '</span>' ),
-                    'install_plugins',
-                    '//support.yithemes.com/hc/en-us/articles/217840988',
-                    __( 'How to install premium version', 'yith-plugin-fw' ),
-                );
-            }
-        }
-
-        /**
          * Show a tabbed panel to setting page
          *
          * a callback function called by add_setting_page => add_submenu_page

@@ -109,7 +109,6 @@ if( ! function_exists( 'yit_get_upgrade_files' ) ){
 			$plugin_upgrade_path = empty( $plugin_upgrade_path ) ? $plugin_license_path : $plugin_upgrade_path;
 			$license_files = array(
 				'%yith-license-path%/lib/yit-licence.php',
-				'%yith-license-path%/lib/yit-plugin-licence.php',
 				'%yith-license-path%/lib/yit-theme-licence.php',
 			);
 

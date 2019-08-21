@@ -126,11 +126,6 @@ if ( !class_exists( 'PG_Debug' ) ) {
                     'label' => 'Framework',
                     'value' => $this->get_plugin_framework_info()
                 ),
-                'yith-premium-plugins' => array(
-                    'label'  => 'YITH Premium Plugins',
-                    'value'  => '',
-                    'subsub' => $this->get_premium_plugins_info()
-                ),
                 'wc-version'           => array(
                     'label' => 'WooCommerce',
                     'value' => $this->get_woocommerce_version_info()
@@ -237,26 +232,6 @@ if ( !class_exists( 'PG_Debug' ) ) {
             $plugin_fw_loaded_by = basename( dirname( PGA_CORE_PLUGIN_PATH ) );
 
             return "$plugin_fw_version (by $plugin_fw_loaded_by)";
-        }
-
-        /**
-         * return premium plugins list with versions
-         *
-         * @return array
-         */
-        public function get_premium_plugins_info() {
-            $plugins      = PGA_Plugin_Licence()->get_products();
-            $plugins_info = array();
-
-            if ( !!$plugins ) {
-                foreach ( $plugins as $plugin ) {
-                    $plugins_info[ $plugin[ 'product_id' ] ] = array( 'title' => $plugin[ 'Name' ] . ' (' . $plugin[ 'Version' ] . ')' );
-                }
-
-                sort( $plugins_info );
-            }
-
-            return $plugins_info;
         }
     }
 }
