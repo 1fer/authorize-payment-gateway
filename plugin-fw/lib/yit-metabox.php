@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Metabox' ) ) {
+if ( !class_exists( 'PGA_Metabox' ) ) {
     /**
      * YIT Metabox
      *
@@ -38,17 +38,16 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
      *                      ),
      *  );
      *
-     * $metabox1 = YIT_Metabox( 'yit-metabox-id' );
+     * $metabox1 = PGA_Metabox( 'yit-metabox-id' );
      * $metabox1->init( $args );
      * </code>
      *
-     * @class YIT_Metaboxes
-     * @package    YITH
+     * @class PGA_Metaboxes
      * @since      1.0.0
-     * @author     Emanuela Castorina <emanuela.castorina@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      *
      */
-    class YIT_Metabox {
+    class PGA_Metabox {
 
         /**
          * @var string the id of metabox
@@ -88,7 +87,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          * @return object Main instance
          *
          * @since  1.0
-         * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function instance( $id ) {
             if ( !isset( self::$_instance[ $id ] ) ) {
@@ -103,9 +102,9 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @param string $id
          *
-         * @return \YIT_Metabox
+         * @return \PGA_Metabox
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function __construct( $id = '' ) {
             $this->id = $id;
@@ -122,7 +121,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function init( $options = array() ) {
 
@@ -157,8 +156,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function enqueue() {
             $enqueue = function_exists( 'get_current_screen' ) && get_current_screen() && in_array( get_current_screen()->id, (array) $this->options[ 'pages' ] );
@@ -190,7 +188,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function set_options( $options = array() ) {
             $this->options = $options;
@@ -206,7 +204,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function set_tabs() {
             if ( !isset( $this->options[ 'tabs' ] ) ) {
@@ -232,7 +230,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_tab( $tab, $where = 'after', $refer = null ) {
             if ( !is_null( $refer ) ) {
@@ -265,7 +263,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function remove_tab( $id_tab ) {
             if ( isset( $this->tabs[ $id_tab ] ) ) {
@@ -288,7 +286,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_field( $tab_id, $args, $where = 'after', $refer = null ) {
             if ( isset( $this->tabs[ $tab_id ] ) ) {
@@ -332,7 +330,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function remove_field( $id_field ) {
             foreach ( $this->tabs as $tab_name => $tab ) {
@@ -351,7 +349,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function reorder_tabs() {
             foreach ( $this->tabs as $tab_name => $tab ) {
@@ -377,7 +375,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_option_metabox_id( $id_field, $private = true ) {
             if ( $private ) {
@@ -397,7 +395,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_option_metabox_name( $id_field, $private = true ) {
             $db_name = apply_filters( 'yit_metaboxes_option_main_name', 'yit_metaboxes' );
@@ -421,7 +419,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function register_metabox( $post_type ) {
 
@@ -438,12 +436,12 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function show() {
             $this->reorder_tabs();
 
-            yit_plugin_get_template( YIT_CORE_PLUGIN_PATH, 'metaboxes/tab.php', array( 'tabs' => $this->tabs ) );
+            yit_plugin_get_template( PGA_CORE_PLUGIN_PATH, 'metaboxes/tab.php', array( 'tabs' => $this->tabs ) );
         }
 
         /**
@@ -455,7 +453,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          *
          * @return int
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function save_postdata( $post_id ) {
 
@@ -511,7 +509,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
 	     *
 	     * @return void
 	     * @since 3.2.1
-	     * @author Emanuela Castorina
+	     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	     */
 	    public function  sanitize_fields( $post_id ) {
 
@@ -578,8 +576,8 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
          * @param $id_fields
          *
          * @return   void
-         * @since    2.0.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         * @since 1.0.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function remove_fields( $id_fields ) {
             foreach ( $id_fields as $k => $field ) {
@@ -596,7 +594,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
 	     * @param $classes
 	     *
 	     * @return   string
-	     * @author   Emanuela Castorina
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	     */
 	    public function add_body_class( $classes ) {
 		    global $post;
@@ -623,7 +621,7 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
 	     *
 	     * @return void
 	     * @since 3.2.1
-	     * @author Emanuela Castorina
+	     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	     */
 	    public function save_toggle_element() {
 		    if ( ! isset( $_REQUEST['post_ID'] ) ) {
@@ -648,21 +646,21 @@ if ( !class_exists( 'YIT_Metabox' ) ) {
     }
 }
 
-if ( !function_exists( 'YIT_Metabox' ) ) {
+if ( !function_exists( 'PGA_Metabox' ) ) {
 
     /**
      * Main instance of plugin
      *
      * @param $id
      *
-     * @return \YIT_Metabox
+     * @return \PGA_Metabox
      * @since  1.0
-     * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
 
 
-    function YIT_Metabox( $id ) {
-        return YIT_Metabox::instance( $id );
+    function PGA_Metabox( $id ) {
+        return PGA_Metabox::instance( $id );
     }
 }
 

@@ -101,7 +101,7 @@
         border-radius: 6px;
         height: 60px;
         float: right;
-        background: url(<?php echo YITH_WCAUTHNET_URL?>/assets/images/upgrade.png) #ff643f no-repeat 13px 13px;
+        background: url(<?php echo PG_WCAUTHNET_URL?>/assets/images/upgrade.png) #ff643f no-repeat 13px 13px;
         border-color: #ff643f;
         box-shadow: none;
         outline: none;
@@ -113,7 +113,7 @@
     .premium-cta a.button:active,
     .premium-cta a.button:focus{
         color: #fff;
-        background: url(<?php echo YITH_WCAUTHNET_URL?>/assets/images/upgrade.png) #971d00 no-repeat 13px 13px;
+        background: url(<?php echo PG_WCAUTHNET_URL?>/assets/images/upgrade.png) #971d00 no-repeat 13px 13px;
         border-color: #971d00;
         box-shadow: none;
         outline: none;
@@ -193,78 +193,78 @@
                     Upgrade to the <span class="highlight">premium version</span>
                     of <span class="highlight">YITH WooCommerce Authorize.net Payment Gateway</span> to benefit from all features!
                 </p>
-                <a href="<?php echo YITH_WCAUTHNET_Admin()->get_premium_landing_uri(); ?>" target="_blank" class="premium-cta-button button btn">
+                <a href="<?php echo PG_WCAUTHNET_Admin()->get_premium_landing_uri(); ?>" target="_blank" class="premium-cta-button button btn">
                     <span class="highlight">UPGRADE</span>
                     <span>to the premium version</span>
                 </a>
             </div>
         </div>
     </div>
-    <div class="section section-even clear" style="background: url(<?php echo YITH_WCAUTHNET_URL ?>/assets/images/01-bg.png) no-repeat #fff; background-position: 85% 75%">
+    <div class="section section-even clear" style="background: url(<?php echo PG_WCAUTHNET_URL ?>/assets/images/01-bg.png) no-repeat #fff; background-position: 85% 75%">
         <h1>Premium Features</h1>
         <div class="landing-container">
             <div class="col-1">
-                <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/01.png" alt="Review Title" />
+                <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/01.png" alt="Review Title" />
             </div>
             <div class="col-2">
                 <div class="section-title">
-                    <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/01-icon.png" alt="Review Title"/>
+                    <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/01-icon.png" alt="Review Title"/>
                     <h2>TRANSACTION MODE</h2>
                 </div>
                 <p>The customers that buy with Authorize.net could compete their payment in two ways: on the same page of the store (with the "API" mode), or on the payment page of Authorize.net (with the "Redirect" mode).</p>
             </div>
         </div>
     </div>
-    <div class="section section-odd clear" style="background: url(<?php echo YITH_WCAUTHNET_URL ?>/assets/images/02-bg.png) no-repeat #f1f1f1; background-position: 15% 100%">
+    <div class="section section-odd clear" style="background: url(<?php echo PG_WCAUTHNET_URL ?>/assets/images/02-bg.png) no-repeat #f1f1f1; background-position: 15% 100%">
         <div class="landing-container">
             <div class="col-2">
                 <div class="section-title">
-                    <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/02-icon.png" alt="Attachment List" />
+                    <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/02-icon.png" alt="Attachment List" />
                     <h2>PAYMENT WITH CREDIT CARD</h2>
                 </div>
                 <p>The credit card becomes a new way of payment for whoever wants to but from your shop. Authorize.net will give to your clients the chance to pay the order with a new credit card, or selecting another one already used, storing its details.</p>
             </div>
             <div class="col-1">
-                <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/02.png" alt="Attachment List" />
+                <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/02.png" alt="Attachment List" />
             </div>
         </div>
     </div>
-    <div class="section section-even clear" style="background: url(<?php echo YITH_WCAUTHNET_URL ?>/assets/images/03-bg.png) no-repeat #fff; background-position: 85% 100%">
+    <div class="section section-even clear" style="background: url(<?php echo PG_WCAUTHNET_URL ?>/assets/images/03-bg.png) no-repeat #fff; background-position: 85% 100%">
         <div class="landing-container">
             <div class="col-1">
-                <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/03.png" alt="Vote the review" />
+                <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/03.png" alt="Vote the review" />
             </div>
             <div class="col-2">
                 <div class="section-title">
-                    <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/03-icon.png" alt="Vote the review" />
+                    <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/03-icon.png" alt="Vote the review" />
                     <h2>ECHECK</h2>
                 </div>
                 <p>You can activate the eCheck payment method, which will be available for users during the checkout among the other options.</p>
             </div>
         </div>
     </div>
-    <div class="section section-odd clear" style="background: url(<?php echo YITH_WCAUTHNET_URL ?>/assets/images/04-bg.png) no-repeat #f1f1f1; background-position: 15% 100%">
+    <div class="section section-odd clear" style="background: url(<?php echo PG_WCAUTHNET_URL ?>/assets/images/04-bg.png) no-repeat #f1f1f1; background-position: 15% 100%">
         <div class="landing-container">
             <div class="col-2">
                 <div class="section-title">
-                    <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/04-icon.png" alt="Attachment List" />
+                    <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/04-icon.png" alt="Attachment List" />
                     <h2>ITEMIZED ORDERS</h2>
                 </div>
                 <p>An option tailored to show the order details both in the checkout during the purchase, and later in the invoice. Your clients won't see just the amount of the order, but also how it is composed.</p>
             </div>
             <div class="col-1">
-                <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/04.png" alt="Attachment List" />
+                <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/04.png" alt="Attachment List" />
             </div>
         </div>
     </div>
-    <div class="section section-even clear" style="background: url(<?php echo YITH_WCAUTHNET_URL ?>/assets/images/05-bg.png) no-repeat #fff; background-position: 85% 100%">
+    <div class="section section-even clear" style="background: url(<?php echo PG_WCAUTHNET_URL ?>/assets/images/05-bg.png) no-repeat #fff; background-position: 85% 100%">
         <div class="landing-container">
             <div class="col-1">
-                <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/05.png" alt="Vote the review" />
+                <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/05.png" alt="Vote the review" />
             </div>
             <div class="col-2">
                 <div class="section-title">
-                    <img src="<?php echo YITH_WCAUTHNET_URL ?>/assets/images/05-icon.png" alt="Vote the review" />
+                    <img src="<?php echo PG_WCAUTHNET_URL ?>/assets/images/05-icon.png" alt="Vote the review" />
                     <h2>REFUND</h2>
                 </div>
                 <p>The refund is now quick and easy. You will just have to go to the order page you are interested into, and with the related button, the amount that you will write will be refunded directly on the client's credit card.</p>
@@ -280,7 +280,7 @@
                     Upgrade to the <span class="highlight">premium version</span>
                     of <span class="highlight">YITH WooCommerce Authorize.net Payment Gateway</span> to benefit from all features!
                 </p>
-                <a href="<?php echo YITH_WCAUTHNET_Admin()->get_premium_landing_uri(); ?>" target="_blank" class="premium-cta-button button btn">
+                <a href="<?php echo PG_WCAUTHNET_Admin()->get_premium_landing_uri(); ?>" target="_blank" class="premium-cta-button button btn">
                     <span class="highlight">UPGRADE</span>
                     <span>to the premium version</span>
                 </a>

@@ -12,16 +12,15 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Ajax' ) ) {
+if ( !class_exists( 'PGA_Ajax' ) ) {
     /**
      * YIT Ajax
      *
-     * @class      YIT_Ajax
-     * @package    YITH
-     * @since      1.0
-     * @author     Leanza Francesco <leanzafrancesco@gmail.com>
+     * @class      PGA_Ajax
+     * @since 1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    class YIT_Ajax {
+    class PGA_Ajax {
         /**
          * @var string version of class
          */
@@ -29,7 +28,7 @@ if ( !class_exists( 'YIT_Ajax' ) ) {
 
         /**
          * @var object The single instance of the class
-         * @since 1.0
+         * @since 1.0.0
          */
         protected static $_instance = null;
         
@@ -37,10 +36,10 @@ if ( !class_exists( 'YIT_Ajax' ) ) {
          * get single instance
          *
          * @static
-         * @return YIT_Ajax
+         * @return PGA_Ajax
          *
          * @since  1.0
-         * @author Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function instance() {
             if ( is_null( self::$_instance ) ) {
@@ -54,7 +53,7 @@ if ( !class_exists( 'YIT_Ajax' ) ) {
          * Constructor
          *
          * @since      1.0
-         * @author     Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         private function __construct() {
             $ajax_actions = array(
@@ -263,4 +262,4 @@ if ( !class_exists( 'YIT_Ajax' ) ) {
     }
 }
 
-YIT_Ajax::instance();
+PGA_Ajax::instance();

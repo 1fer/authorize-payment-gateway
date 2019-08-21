@@ -13,24 +13,23 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Icons' ) ) {
+if ( !class_exists( 'PGA_Icons' ) ) {
     /**
      * YIT Icons
      *
      * Class to manage icons
      *
-     * @class       YIT_Icons
-     * @package     YITH
+     * @class       PGA_Icons
      * @since       1.0.0
-     * @author      Leanza Francesco <leanzafrancesco@gmail.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      *
      */
-    class YIT_Icons {
+    class PGA_Icons {
 
         /**
          * Single instance of the class
          *
-         * @var YIT_Icons
+         * @var PGA_Icons
          */
         private static $_instance;
 
@@ -914,9 +913,9 @@ if ( !class_exists( 'YIT_Icons' ) ) {
         /**
          * Returns single instance of the class
          *
-         * @return YIT_Icons
+         * @return PGA_Icons
          * @since 1.0.0
-         * @author      Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function get_instance() {
             return isset( self::$_instance ) ? self::$_instance : self::$_instance = new self();
@@ -925,7 +924,7 @@ if ( !class_exists( 'YIT_Icons' ) ) {
         /**
          * @since 1.0.0
          * @access protected
-         * @author      Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         private function __construct() {
             add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 99 );
@@ -1066,7 +1065,7 @@ if ( !class_exists( 'YIT_Icons' ) ) {
         /**
          * Enqueue Scripts
          *
-         * @author      Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function enqueue_scripts() {
             wp_register_style( 'font-awesome', "https://maxcdn.bootstrapcdn.com/font-awesome/{$this->font_awesome_version}/css/font-awesome.min.css", array(), $this->font_awesome_version );
@@ -1136,10 +1135,10 @@ if ( !class_exists( 'YIT_Icons' ) ) {
 
     }
 }
-if( ! function_exists( 'YIT_Icons' ) ){
-	function YIT_Icons() {
-		return YIT_Icons::get_instance();
+if( ! function_exists( 'PGA_Icons' ) ){
+	function PGA_Icons() {
+		return PGA_Icons::get_instance();
 	}
 }
 
-YIT_Icons();
+PGA_Icons();

@@ -87,7 +87,7 @@ do_action( 'yit_before_metaboxes_tab' ) ?>
 
                         if ( $display_row ) {
 
-                            $field_row_path = apply_filters( 'yith_plugin_fw_metabox_field_row_template_path', YIT_CORE_PLUGIN_TEMPLATE_PATH . '/metaboxes/field-row.php', $field );
+                            $field_row_path = apply_filters( 'yith_plugin_fw_metabox_field_row_template_path', PGA_CORE_PLUGIN_TEMPLATE_PATH . '/metaboxes/field-row.php', $field );
                             file_exists( $field_row_path ) && include( $field_row_path );
                         } else {
 
@@ -96,7 +96,7 @@ do_action( 'yit_before_metaboxes_tab' ) ?>
                     } else {
                         // backward compatibility
                         $args = apply_filters( 'yit_fw_metaboxes_type_args', array(
-                                                                               'basename' => YIT_CORE_PLUGIN_PATH,
+                                                                               'basename' => PGA_CORE_PLUGIN_PATH,
                                                                                'path'     => '/metaboxes/types/',
                                                                                'type'     => $field[ 'type' ],
                                                                                'args'     => array( 'args' => $field )

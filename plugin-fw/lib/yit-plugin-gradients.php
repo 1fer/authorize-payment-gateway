@@ -5,9 +5,8 @@
  * In this files there is a collection of a functions useful for the core
  * of the framework.
  *
- * @package    WordPress
  * @subpackage Your Inspiration Themes
- * @author     Your Inspiration Themes Team <info@yithemes.com>
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com> Team <info@yithemes.com>
  *
  * This source file is subject to the GNU GENERAL PUBLIC LICENSE (GPL 3.0)
  * that is bundled with this package in the file LICENSE.txt.
@@ -26,9 +25,9 @@
  * @since 1.0
  */
 
-if ( ! class_exists( 'YIT_Gradients' ) ) {
+if ( ! class_exists( 'PGA_Gradients' ) ) {
 
-    class YIT_Gradients {
+    class PGA_Gradients {
 
         /**
          * An array of colors to use for a gradient.
@@ -382,12 +381,12 @@ if ( ! class_exists( 'YIT_Gradients' ) ) {
          *
          * @param string $class The name of class that I want the instance
          *
-         * @since  2.0.0
-         * @author Simone D'Amico <simone.damico@yithemes.com>
+         * @since  1.0.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          * @return mixed
          */
         public function getModel( $class ) {
-            return YIT_Registry::get_instance()->$class;
+            return PGA_Registry::get_instance()->$class;
         }
 
 
@@ -399,7 +398,7 @@ if ( ! class_exists( 'YIT_Gradients' ) ) {
          *
          * @return  string
          * @since   1.0
-         * @author  Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function hex_darker( $color, $factor = 30 ) {
             $color = str_replace( '#', '', $color );
@@ -435,7 +434,7 @@ if ( ! class_exists( 'YIT_Gradients' ) ) {
          *
          * @return  string
          * @since   1.0
-         * @author  Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function hex_lighter( $color, $factor = 30 ) {
             $color = str_replace( '#', '', $color );
@@ -473,7 +472,7 @@ if ( ! class_exists( 'YIT_Gradients' ) ) {
          *
          * @return  string
          * @since   1.0
-         * @author  Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function light_or_dark( $color, $dark = '#000000', $light = '#FFFFFF' ) {
             $hex = str_replace( '#', '', $color );
@@ -494,7 +493,7 @@ if ( ! class_exists( 'YIT_Gradients' ) ) {
          * @internal param string $color
          * @return  string
          * @since    1.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function hex2rgb( $hex ) {
             $hex = str_replace( "#", "", $hex );
@@ -519,14 +518,14 @@ if ( ! class_exists( 'YIT_Gradients' ) ) {
          *
          * @param $name string The name of magic property
          *
-         * @since  2.0.0
-         * @author Simone D'Amico <simone.damico@yithemes.com>
+         * @since  1.0.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          * @return mixed
          */
         public function __get( $name ) {
             if ( $name == 'request' ) {
-                if ( ! $this->_request instanceof YIT_Request ) {
-                    $this->_request = YIT_Registry::get_instance()->request;
+                if ( ! $this->_request instanceof PGA_Request ) {
+                    $this->_request = PGA_Registry::get_instance()->request;
                 }
 
                 return $this->_request;

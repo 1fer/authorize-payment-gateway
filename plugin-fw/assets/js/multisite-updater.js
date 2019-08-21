@@ -29,7 +29,7 @@
      *
      * Add the update plugin rows for old plugin
      *
-     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      *
      * @param registered Registred plugins
      * @param activated Activated plugins

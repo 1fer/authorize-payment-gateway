@@ -11,8 +11,7 @@
 /**
  * Upload Plugin Admin View
  *
- * @package    YITH
- * @author     Emanuela Castorina <emanuela.castorina@yithemes.it>
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  * @since      1.0.0
  */
 
@@ -47,7 +46,7 @@ $hidden_val = get_option($id . "-yith-attachment-id", 0);
                 <?php
                 $file = $value;
                 if (preg_match('/(jpg|jpeg|png|gif|ico)$/', $file)) {
-                    echo "<img src=\"" . YIT_CORE_PLUGIN_URL . "/assets/images/sleep.png\" data-src=\"$file\" />";
+                    echo "<img src=\"" . PGA_CORE_PLUGIN_URL . "/assets/images/sleep.png\" data-src=\"$file\" />";
                 }
                 ?>
             </div>

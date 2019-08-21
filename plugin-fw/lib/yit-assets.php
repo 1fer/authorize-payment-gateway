@@ -9,23 +9,22 @@
 
 !defined( 'ABSPATH' ) && exit; // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Assets' ) ) {
+if ( !class_exists( 'PGA_Assets' ) ) {
     /**
      * YIT Assets
      *
-     * @class      YIT_Assets
-     * @package    YITH
-     * @since      3.0.0
-     * @author     Leanza Francesco <leanzafrancesco@gmail.com>
+     * @class      PGA_Assets
+     * @since      1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    class YIT_Assets {
+    class PGA_Assets {
         /** @var string */
         public $version = '1.0.0';
 
-        /** @var YIT_Assets */
+        /** @var PGA_Assets */
         private static $_instance;
 
-        /** @return YIT_Assets */
+        /** @return PGA_Assets */
         public static function instance() {
             return !is_null( self::$_instance ) ? self::$_instance : self::$_instance = new self();
         }
@@ -34,10 +33,10 @@ if ( !class_exists( 'YIT_Assets' ) ) {
          * Constructor
          *
          * @since      1.0
-         * @author     Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         private function __construct() {
-            defined( 'YITH_PLUGIN_FW_VERSION' ) && $this->version = YITH_PLUGIN_FW_VERSION;
+            defined( 'PG_PLUGIN_FW_VERSION' ) && $this->version = PG_PLUGIN_FW_VERSION;
             add_action( 'admin_enqueue_scripts', array( $this, 'register_styles_and_scripts' ) );
         }
 
@@ -50,24 +49,24 @@ if ( !class_exists( 'YIT_Assets' ) ) {
             $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
             //scripts
-            wp_register_script( 'yith-plugin-fw-fields', YIT_CORE_PLUGIN_URL . '/assets/js/yith-fields' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'codemirror', 'codemirror-javascript', 'jquery-ui-slider', 'jquery-ui-sortable' ), $this->version, true );
-            wp_register_script( 'yit-metabox', YIT_CORE_PLUGIN_URL . '/assets/js/metabox' . $suffix . '.js', array( 'jquery', 'wp-color-picker', 'yith-plugin-fw-fields' ), $this->version, true );
-            wp_register_script( 'yit-plugin-panel', YIT_CORE_PLUGIN_URL . '/assets/js/yit-plugin-panel' . $suffix . '.js', array( 'jquery', 'wp-color-picker', 'jquery-ui-sortable', 'yith-plugin-fw-fields' ), $this->version, true );
-            wp_register_script( 'codemirror', YIT_CORE_PLUGIN_URL . '/assets/js/codemirror/codemirror.js', array( 'jquery' ), $this->version, true );
-            wp_register_script( 'codemirror-javascript', YIT_CORE_PLUGIN_URL . '/assets/js/codemirror/javascript.js', array( 'jquery', 'codemirror' ), $this->version, true );
-            wp_register_script( 'colorbox', YIT_CORE_PLUGIN_URL . '/assets/js/jquery.colorbox' . $suffix . '.js', array( 'jquery' ), '1.6.3', true );
-            wp_register_script( 'yith_how_to', YIT_CORE_PLUGIN_URL . '/assets/js/how-to' . $suffix . '.js', array( 'jquery' ), $this->version, true );
+            wp_register_script( 'yith-plugin-fw-fields', PGA_CORE_PLUGIN_URL . '/assets/js/yith-fields' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'codemirror', 'codemirror-javascript', 'jquery-ui-slider', 'jquery-ui-sortable' ), $this->version, true );
+            wp_register_script( 'yit-metabox', PGA_CORE_PLUGIN_URL . '/assets/js/metabox' . $suffix . '.js', array( 'jquery', 'wp-color-picker', 'yith-plugin-fw-fields' ), $this->version, true );
+            wp_register_script( 'yit-plugin-panel', PGA_CORE_PLUGIN_URL . '/assets/js/yit-plugin-panel' . $suffix . '.js', array( 'jquery', 'wp-color-picker', 'jquery-ui-sortable', 'yith-plugin-fw-fields' ), $this->version, true );
+            wp_register_script( 'codemirror', PGA_CORE_PLUGIN_URL . '/assets/js/codemirror/codemirror.js', array( 'jquery' ), $this->version, true );
+            wp_register_script( 'codemirror-javascript', PGA_CORE_PLUGIN_URL . '/assets/js/codemirror/javascript.js', array( 'jquery', 'codemirror' ), $this->version, true );
+            wp_register_script( 'colorbox', PGA_CORE_PLUGIN_URL . '/assets/js/jquery.colorbox' . $suffix . '.js', array( 'jquery' ), '1.6.3', true );
+            wp_register_script( 'yith_how_to', PGA_CORE_PLUGIN_URL . '/assets/js/how-to' . $suffix . '.js', array( 'jquery' ), $this->version, true );
 
             //styles
             $jquery_version = isset( $wp_scripts->registered[ 'jquery-ui-core' ]->ver ) ? $wp_scripts->registered[ 'jquery-ui-core' ]->ver : '1.9.2';
-            wp_register_style( 'codemirror', YIT_CORE_PLUGIN_URL . '/assets/css/codemirror/codemirror.css' );
-            wp_register_style( 'yit-plugin-style', YIT_CORE_PLUGIN_URL . '/assets/css/yit-plugin-panel.css', array(), $this->version );
+            wp_register_style( 'codemirror', PGA_CORE_PLUGIN_URL . '/assets/css/codemirror/codemirror.css' );
+            wp_register_style( 'yit-plugin-style', PGA_CORE_PLUGIN_URL . '/assets/css/yit-plugin-panel.css', array(), $this->version );
             wp_register_style( 'raleway-font', '//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,100,200,300,900' );
             wp_register_style( 'yit-jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), $jquery_version );
-            wp_register_style( 'colorbox', YIT_CORE_PLUGIN_URL . '/assets/css/colorbox.css', array(), $this->version );
-            wp_register_style( 'yit-upgrade-to-pro', YIT_CORE_PLUGIN_URL . '/assets/css/yit-upgrade-to-pro.css', array( 'colorbox' ), $this->version );
-            wp_register_style( 'yit-plugin-metaboxes', YIT_CORE_PLUGIN_URL . '/assets/css/metaboxes.css', array(), $this->version );
-            wp_register_style( 'yith-plugin-fw-fields', YIT_CORE_PLUGIN_URL . '/assets/css/yith-fields.css', false, $this->version );
+            wp_register_style( 'colorbox', PGA_CORE_PLUGIN_URL . '/assets/css/colorbox.css', array(), $this->version );
+            wp_register_style( 'yit-upgrade-to-pro', PGA_CORE_PLUGIN_URL . '/assets/css/yit-upgrade-to-pro.css', array( 'colorbox' ), $this->version );
+            wp_register_style( 'yit-plugin-metaboxes', PGA_CORE_PLUGIN_URL . '/assets/css/metaboxes.css', array(), $this->version );
+            wp_register_style( 'yith-plugin-fw-fields', PGA_CORE_PLUGIN_URL . '/assets/css/yith-fields.css', false, $this->version );
 
             $wc_version_suffix = '';
             if ( function_exists( 'WC' ) || !empty( $woocommerce ) ) {
@@ -77,10 +76,10 @@ if ( !class_exists( 'YIT_Assets' ) ) {
                 wp_register_style( 'woocommerce_admin_styles', $woocommerce->plugin_url() . '/assets/css/admin.css', array(), $woocommerce_version );
             } else {
                 wp_register_script( 'select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery' ), '4.0.3', true );
-                wp_register_style( 'yith-select2-no-wc', YIT_CORE_PLUGIN_URL . '/assets/css/yith-select2-no-wc.css', false, $this->version );
+                wp_register_style( 'yith-select2-no-wc', PGA_CORE_PLUGIN_URL . '/assets/css/yith-select2-no-wc.css', false, $this->version );
             }
 
-            wp_register_script( 'yith-enhanced-select', YIT_CORE_PLUGIN_URL . '/assets/js/yith-enhanced-select' . $wc_version_suffix . $suffix . '.js', array( 'jquery', 'select2' ), '1.0.0', true );
+            wp_register_script( 'yith-enhanced-select', PGA_CORE_PLUGIN_URL . '/assets/js/yith-enhanced-select' . $wc_version_suffix . $suffix . '.js', array( 'jquery', 'select2' ), '1.0.0', true );
             wp_localize_script( 'yith-enhanced-select', 'yith_framework_enhanced_select_params', array(
                 'ajax_url'           => admin_url( 'admin-ajax.php' ),
                 'search_posts_nonce' => wp_create_nonce( 'search-posts' ),
@@ -92,9 +91,9 @@ if ( !class_exists( 'YIT_Assets' ) ) {
                 'admin_url' => admin_url( 'admin.php' ),
                 'ajax_url'  => admin_url( 'admin-ajax.php' ),
             ) );
-            wp_enqueue_style( 'yith-plugin-fw-admin', YIT_CORE_PLUGIN_URL . '/assets/css/admin.css', array(), $this->version );
+            wp_enqueue_style( 'yith-plugin-fw-admin', PGA_CORE_PLUGIN_URL . '/assets/css/admin.css', array(), $this->version );
         }
     }
 }
 
-YIT_Assets::instance();
+PGA_Assets::instance();

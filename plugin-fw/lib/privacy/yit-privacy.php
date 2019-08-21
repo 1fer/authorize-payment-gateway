@@ -1,14 +1,14 @@
 <?php
 !defined( 'ABSPATH' ) && exit; // Exit if accessed directly
 
-if ( !class_exists( 'YITH_Privacy' ) ) {
+if ( !class_exists( 'PG_Privacy' ) ) {
     /**
-     * Class YITH_Privacy
+     * Class PG_Privacy
      * Privacy Class
      *
-     * @author Leanza Francesco <leanzafrancesco@gmail.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    class YITH_Privacy {
+    class PG_Privacy {
         private static $_instance;
 
         private $_title;
@@ -18,7 +18,7 @@ if ( !class_exists( 'YITH_Privacy' ) ) {
         }
 
         /**
-         * YITH_Privacy constructor.
+         * PG_Privacy constructor.
          */
         private function __construct() {
             $this->_title = apply_filters( 'yith_plugin_fw_privacy_policy_guide_title', _x( 'YITH Plugins', 'Privacy Policy Guide Title', 'yith-plugin-fw' ) );
@@ -44,7 +44,7 @@ if ( !class_exists( 'YITH_Privacy' ) ) {
          * @return string
          */
         public function get_privacy_message() {
-            $privacy_content_path = YIT_CORE_PLUGIN_TEMPLATE_PATH . '/privacy/html-policy-content.php';
+            $privacy_content_path = PGA_CORE_PLUGIN_TEMPLATE_PATH . '/privacy/html-policy-content.php';
             ob_start();
             $sections = $this->get_sections();
             if ( file_exists( $privacy_content_path ) )
@@ -76,4 +76,4 @@ if ( !class_exists( 'YITH_Privacy' ) ) {
     }
 }
 
-YITH_Privacy::get_instance();
+PG_Privacy::get_instance();

@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if( ! class_exists( 'YITH_Gutenberg' ) ){
+if( ! class_exists( 'PG_Gutenberg' ) ){
 
-	class YITH_Gutenberg{
+	class PG_Gutenberg{
 		/**
 		 * @var array Registered blocks
 		 */
@@ -40,7 +40,7 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 		private $_category_slug = 'yith-blocks';
 
 		/**
-		 * @var YIT_Upgrade The main instance
+		 * @var PGA_Upgrade The main instance
 		 */
 		protected static $_instance;
 
@@ -51,7 +51,7 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 		 * @return object Main instance
 		 *
 		 * @since  1.0
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -62,7 +62,7 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 		}
 
 		/**
-		 * YITH_Gutenberg constructor.
+		 * PG_Gutenberg constructor.
 		 */
 		private function __construct() {
 			add_action( 'init', array( $this, 'register_blocks' ), 30 );
@@ -82,8 +82,8 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 				'wp-element',
 				'yith-js-md5'
 			) );
-			wp_register_script( 'yith-js-md5', YIT_CORE_PLUGIN_URL . '/assets/js/javascript-md5/md5.min.js', array(), '2.10.0', true );
-			wp_enqueue_script( 'yith-gutenberg', YIT_CORE_PLUGIN_URL . '/assets/js/yith-gutenberg' . $suffix . '.js', $deps, yith_plugin_fw_get_version(), true );
+			wp_register_script( 'yith-js-md5', PGA_CORE_PLUGIN_URL . '/assets/js/javascript-md5/md5.min.js', array(), '2.10.0', true );
+			wp_enqueue_script( 'yith-gutenberg', PGA_CORE_PLUGIN_URL . '/assets/js/yith-gutenberg' . $suffix . '.js', $deps, yith_plugin_fw_get_version(), true );
 			wp_localize_script( 'yith-gutenberg', 'yith_gutenberg', $this->_blocks_args );
 			wp_localize_script( 'yith-gutenberg', 'yith_gutenberg_ajax', array( 'ajaxurl' => $ajax_url ) );
 		}
@@ -92,7 +92,7 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 		 * Add blocks to gutenberg editor
 		 *
 		 * @return void
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function register_blocks(){
 		    $block_args = array();
@@ -123,7 +123,7 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 		 *
 		 * @return array block categories
 		 *
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function block_category( $categories, $post ){
 			return array_merge(
@@ -143,7 +143,7 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 		 * @param $blocks string|array new blocks
 		 * @return bool true if add a new blocks, false otherwise
 		 *
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function add_blocks( $blocks ){
 			$added = false;
@@ -317,17 +317,17 @@ if( ! class_exists( 'YITH_Gutenberg' ) ){
 	}
 }
 
-if ( ! function_exists( 'YITH_Gutenberg' ) ) {
+if ( ! function_exists( 'PG_Gutenberg' ) ) {
 	/**
 	 * Main instance of plugin
 	 *
-	 * @return YITH_Gutenberg
+	 * @return PG_Gutenberg
 	 * @since  1.0
-	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
-	function YITH_Gutenberg() {
-		return YITH_Gutenberg::instance();
+	function PG_Gutenberg() {
+		return PG_Gutenberg::instance();
 	}
 }
 
-YITH_Gutenberg();
+PG_Gutenberg();

@@ -1,8 +1,8 @@
 <?php
 !defined( 'ABSPATH' ) && exit; // Exit if accessed directly
 
-if ( !class_exists( 'YITH_Privacy_Plugin_Abstract' ) ) {
-    class YITH_Privacy_Plugin_Abstract {
+if ( !class_exists( 'PG_Privacy_Plugin_Abstract' ) ) {
+    class PG_Privacy_Plugin_Abstract {
         private $_name;
 
         public function __construct( $name ) {

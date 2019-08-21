@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 
-! defined( 'YIT_CORE_PLUGIN' )                  && define( 'YIT_CORE_PLUGIN', true);
-! defined( 'YIT_CORE_PLUGIN_PATH' )             && define( 'YIT_CORE_PLUGIN_PATH', dirname(__FILE__) );
-! defined( 'YIT_CORE_PLUGIN_URL' )              && define( 'YIT_CORE_PLUGIN_URL', untrailingslashit( plugins_url( '/', __FILE__ ) ) );
-! defined( 'YIT_CORE_PLUGIN_TEMPLATE_PATH' )    && define( 'YIT_CORE_PLUGIN_TEMPLATE_PATH', YIT_CORE_PLUGIN_PATH .  '/templates' );
+! defined( 'PGA_CORE_PLUGIN' )                  && define( 'PGA_CORE_PLUGIN', true);
+! defined( 'PGA_CORE_PLUGIN_PATH' )             && define( 'PGA_CORE_PLUGIN_PATH', dirname(__FILE__) );
+! defined( 'PGA_CORE_PLUGIN_URL' )              && define( 'PGA_CORE_PLUGIN_URL', untrailingslashit( plugins_url( '/', __FILE__ ) ) );
+! defined( 'PGA_CORE_PLUGIN_TEMPLATE_PATH' )    && define( 'PGA_CORE_PLUGIN_TEMPLATE_PATH', PGA_CORE_PLUGIN_PATH .  '/templates' );
 
 include_once( 'yit-functions.php' );
 include_once( 'yit-woocommerce-compatibility.php' );
@@ -64,8 +64,7 @@ if( ! function_exists( 'yit_plugin_fw_row_meta' ) ){
 	 * @param $plugin_data
 	 * @param $status
 	 *
-	 * @since 3.0.17
-	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 *
 	 * @return null|string|string[] $plugin row meta array
 	 */
@@ -178,8 +177,7 @@ if( ! function_exists( 'yith_add_action_links' ) ){
 	 * @param $links | links plugin array
 	 *
 	 * @return   mixed Array
-	 * @since    1.6.5
-	 * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 * @return mixed
 	 * @use      plugin_action_links_{$plugin_file_name}
 	 */
@@ -189,8 +187,8 @@ if( ! function_exists( 'yith_add_action_links' ) ){
 			$links[] = sprintf( '<a href="%s">%s</a>', admin_url( "admin.php?page={$panel_page}" ), _x( 'Settings', 'Action links',  'yith-plugin-fw' ) );
 		}
 
-		if( $is_premium && class_exists( 'YIT_Plugin_Licence' ) ){
-			$links[] = sprintf( '<a href="%s">%s</a>', YIT_Plugin_Licence()->get_license_activation_url(),__( 'License',  'yith-plugin-fw' ) );
+		if( $is_premium && class_exists( 'PGA_Plugin_Licence' ) ){
+			$links[] = sprintf( '<a href="%s">%s</a>', PGA_Plugin_Licence()->get_license_activation_url(),__( 'License',  'yith-plugin-fw' ) );
 		}
 
 		return $links;

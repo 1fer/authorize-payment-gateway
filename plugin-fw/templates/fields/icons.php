@@ -19,12 +19,12 @@ extract( $field );
 
 $filter_icons      = !empty( $field[ 'filter_icons' ] ) ? $field[ 'filter_icons' ] : '';
 $default_icon_text = isset( $std ) ? $std : false;
-$default_icon_data = YIT_Icons()->get_icon_data( $default_icon_text, $filter_icons );
+$default_icon_data = PGA_Icons()->get_icon_data( $default_icon_text, $filter_icons );
 
-$current_icon_data = YIT_Icons()->get_icon_data( $value, $filter_icons );
+$current_icon_data = PGA_Icons()->get_icon_data( $value, $filter_icons );
 $current_icon_text = $value;
 
-$yit_icons = YIT_Icons()->get_icons( $filter_icons );
+$yit_icons = PGA_Icons()->get_icons( $filter_icons );
 ?>
 
 <div id="yit-icons-manager-wrapper-<?php echo $id ?>" class="yit-icons-manager-wrapper">

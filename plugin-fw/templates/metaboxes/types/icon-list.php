@@ -11,8 +11,7 @@
 /**
  * Awesome Icon Admin View
  *
- * @package    YITH
- * @author Emanuela Castorina <emanuela.castorina@yithemes.com>
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  * @since 1.0.0
  */
 
@@ -22,10 +21,10 @@ extract( $args );
 if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $current_options = wp_parse_args( $args[ 'value' ], $args[ 'std' ] );
-$current_icon    = YIT_Icon()->get_icon_data( $current_options[ 'icon' ] );
-$std_icon        = YIT_Icon()->get_icon_data( $std[ 'icon' ] );
+$current_icon    = PGA_Icon()->get_icon_data( $current_options[ 'icon' ] );
+$std_icon        = PGA_Icon()->get_icon_data( $std[ 'icon' ] );
 
-$options[ 'icon' ] = YIT_Plugin_Common::get_icon_list();
+$options[ 'icon' ] = PGA_Plugin_Common::get_icon_list();
 
 ?>
 
@@ -73,7 +72,7 @@ $options[ 'icon' ] = YIT_Plugin_Common::get_icon_list();
                     <?php
                     $file = $current_options[ 'custom' ];
                     if ( preg_match( '/(jpg|jpeg|png|gif|ico)$/', $file ) ) {
-                        echo __( 'Image preview', 'yith-plugin-fw' ) . ': ' . "<img src=\"" . YIT_CORE_ASSETS_URL . "/images/sleep.png\" data-src=\"$file\" />";
+                        echo __( 'Image preview', 'yith-plugin-fw' ) . ': ' . "<img src=\"" . PGA_CORE_ASSETS_URL . "/images/sleep.png\" data-src=\"$file\" />";
                     }
                     ?>
                 </div>

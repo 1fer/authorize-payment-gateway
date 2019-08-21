@@ -12,18 +12,17 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if ( ! class_exists( 'YIT_Theme_Licence' ) ) {
+if ( ! class_exists( 'PGA_Theme_Licence' ) ) {
 	/**
 	 * YIT Licence Panel
 	 *
 	 * Setting Page to Manage Products
 	 *
-	 * @class      YIT_Licence
-	 * @package    YITH
+	 * @class      PGA_Licence
 	 * @since      1.0
-	 * @author     Andrea Grillo      <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
-	class YIT_Theme_Licence {
+	class PGA_Theme_Licence {
 		/**
 		 * @var object The single instance of the class
 		 * @since 1.0
@@ -34,7 +33,7 @@ if ( ! class_exists( 'YIT_Theme_Licence' ) ) {
 		 * Constructor
 		 *
 		 * @since    1.0
-		 * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function __construct() {
 			//Silence is golden
@@ -50,16 +49,16 @@ if ( ! class_exists( 'YIT_Theme_Licence' ) ) {
 		 * @return void
 		 *
 		 * @since    1.0
-		 * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function register( $init, $secret_key, $product_id ){
-			if( ! function_exists( 'YITH_Theme_Licence' ) ){
-				//Try to load YITH_Theme_Licence class
+			if( ! function_exists( 'PG_Theme_Licence' ) ){
+				//Try to load PG_Theme_Licence class
 				yith_plugin_fw_load_update_and_licence_files();
 			}
 
             try {
-                YITH_Theme_Licence()->register( $init, $secret_key, $product_id );
+                PG_Theme_Licence()->register( $init, $secret_key, $product_id );
             } catch( Error $e ){
             }
 		}
@@ -71,7 +70,7 @@ if ( ! class_exists( 'YIT_Theme_Licence' ) ) {
 		 * @return object Main instance
 		 *
 		 * @since  1.0
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -88,10 +87,10 @@ if ( ! class_exists( 'YIT_Theme_Licence' ) ) {
  *
  * @return object
  * @since  1.0
- * @author Andrea Grillo <andrea.grillo@yithemes.com>
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  */
-if ( !function_exists( 'YIT_Theme_Licence' ) ) {
-	function YIT_Theme_Licence() {
-		return YIT_Theme_Licence::instance();
+if ( !function_exists( 'PGA_Theme_Licence' ) ) {
+	function PGA_Theme_Licence() {
+		return PGA_Theme_Licence::instance();
 	}
 }

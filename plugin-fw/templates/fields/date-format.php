@@ -10,8 +10,6 @@
  * @var array $field
  */
 
-/** @since 3.1.30 */
-
 ! defined( 'ABSPATH' ) && exit; // Exit if accessed directly
 
 extract( $field );

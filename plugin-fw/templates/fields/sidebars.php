@@ -19,16 +19,16 @@ $sidebar_right = !isset( $value[ 'sidebar-right' ] ) ? '-1' : $value[ 'sidebar-r
 <div class="yith-plugin-fw-sidebar-layout">
     <div class="option">
         <input type="radio" name="<?php echo $name ?>[layout]" id="<?php echo $id . '-left' ?>" value="sidebar-left" <?php checked( $layout, 'sidebar-left' ) ?> />
-        <img src="<?php echo YIT_CORE_PLUGIN_URL ?>/assets/images/sidebar-left.png" title="<?php _e( 'Left sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'Left sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-left' ?>" data-type="left"/>
+        <img src="<?php echo PGA_CORE_PLUGIN_URL ?>/assets/images/sidebar-left.png" title="<?php _e( 'Left sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'Left sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-left' ?>" data-type="left"/>
 
         <input type="radio" name="<?php echo $name ?>[layout]" id="<?php echo $id . '-right' ?>" value="sidebar-right" <?php checked( $layout, 'sidebar-right' ) ?> />
-        <img src="<?php echo YIT_CORE_PLUGIN_URL ?>/assets/images/sidebar-right.png" title="<?php _e( 'Right sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'Right sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-right' ?>" data-type="right"/>
+        <img src="<?php echo PGA_CORE_PLUGIN_URL ?>/assets/images/sidebar-right.png" title="<?php _e( 'Right sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'Right sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-right' ?>" data-type="right"/>
 
         <input type="radio" name="<?php echo $name ?>[layout]" id="<?php echo $id . '-double' ?>" value="sidebar-double" <?php checked( $layout, 'sidebar-double' ) ?> />
-        <img src="<?php echo YIT_CORE_PLUGIN_URL ?>/assets/images/double-sidebar.png" title="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-double' ?>" data-type="double"/>
+        <img src="<?php echo PGA_CORE_PLUGIN_URL ?>/assets/images/double-sidebar.png" title="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-double' ?>" data-type="double"/>
 
         <input type="radio" name="<?php echo $name ?>[layout]" id="<?php echo $id . '-no' ?>" value="sidebar-no" <?php checked( $layout, 'sidebar-no' ) ?> />
-        <img src="<?php echo YIT_CORE_PLUGIN_URL ?>/assets/images/no-sidebar.png" title="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-no' ?>" data-type="none"/>
+        <img src="<?php echo PGA_CORE_PLUGIN_URL ?>/assets/images/no-sidebar.png" title="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" alt="<?php _e( 'No sidebar', 'yith-plugin-fw' ) ?>" class="<?php echo $id . '-no' ?>" data-type="none"/>
     </div>
     <div class="clearfix"></div>
     <div class="option" id="choose-sidebars">

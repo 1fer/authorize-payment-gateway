@@ -18,26 +18,25 @@
 /**
  * Main class
  *
- * @author Your Inspiration Themes
- * @package YITH WooCommerce Authorize.net
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  * @version 1.0.0
  */
 
-if ( ! defined( 'YITH_WCAUTHNET' ) ) {
+if ( ! defined( 'PG_WCAUTHNET' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if( ! class_exists( 'YITH_WCAUTHNET' ) ){
+if( ! class_exists( 'PG_WCAUTHNET' ) ){
 	/**
 	 * WooCommerce Authorize.net main class
 	 *
 	 * @since 1.0.0
 	 */
-	class YITH_WCAUTHNET {
+	class PG_WCAUTHNET {
 		/**
 		 * Single instance of the class
 		 *
-		 * @var \YITH_WCAUTHNET
+		 * @var \PG_WCAUTHNET
 		 * @since 1.0.0
 		 */
 		protected static $instance;
@@ -45,7 +44,7 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 		/**
 		 * Returns single instance of the class
 		 *
-		 * @return \YITH_WCAUTHNET
+		 * @return \PG_WCAUTHNET
 		 * @since 1.0.0
 		 */
 		public static function get_instance(){
@@ -60,7 +59,7 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 		 * Constructor.
 		 *
 		 * @param array $details
-		 * @return \YITH_WCAUTHNET
+		 * @return \PG_WCAUTHNET
 		 * @since 1.0.0
 		 */
 		public function __construct() {
@@ -73,8 +72,8 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 			// add filter to append wallet as payment gateway
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_to_gateways' ) );
 
-			if( defined( 'YITH_WCAUTHNET_PREMIUM' ) && YITH_WCAUTHNET_PREMIUM ){
-				YITH_WCAUTHNET_Premium();
+			if( defined( 'PG_WCAUTHNET_PREMIUM' ) && PG_WCAUTHNET_PREMIUM ){
+				PG_WCAUTHNET_Premium();
 			}
 		}
 		
@@ -89,7 +88,7 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 			$suffix = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '' : '.min';
 
 			if( is_checkout() || isset( $wp->query_vars['add-payment-method'] ) ){
-				wp_enqueue_script( 'yith-wcauthnet-form-handler', YITH_WCAUTHNET_URL . 'assets/js/' . $path . 'authorize-net' . $suffix . '.js', array( 'jquery' ), YITH_WCAUTHNET_VERSION, true );
+				wp_enqueue_script( 'yith-wcauthnet-form-handler', PG_WCAUTHNET_URL . 'assets/js/' . $path . 'authorize-net' . $suffix . '.js', array( 'jquery' ), PG_WCAUTHNET_VERSION, true );
 			}
 		}
 
@@ -100,15 +99,15 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 		 *
 		 * @return array New list of available gateways
 		 * @since 1.0.0
-		 * @author Antonio La Rocca <antonio.larocca@yithemes.it>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function add_to_gateways( $methods ) {
-			if( defined( 'YITH_WCAUTHNET_PREMIUM' ) && YITH_WCAUTHNET_PREMIUM ){
-				$methods[] = 'YITH_WCAUTHNET_Credit_Card_Gateway_Premium';
-				$methods[] = 'YITH_WCAUTHNET_eCheck_Gateway';
+			if( defined( 'PG_WCAUTHNET_PREMIUM' ) && PG_WCAUTHNET_PREMIUM ){
+				$methods[] = 'PG_WCAUTHNET_Credit_Card_Gateway_Premium';
+				$methods[] = 'PG_WCAUTHNET_eCheck_Gateway';
 			}
 			else{
-				$methods[] = 'YITH_WCAUTHNET_Credit_Card_Gateway';
+				$methods[] = 'PG_WCAUTHNET_Credit_Card_Gateway';
 			}
 			return $methods;
 		}
@@ -122,7 +121,7 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 		 * @since 1.0.0
 		 */
 		public function plugin_fw_loader() {
-			if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
+			if ( ! defined( 'PGA_CORE_PLUGIN' ) ) {
 				global $plugin_fw_data;
 				if( ! empty( $plugin_fw_data ) ){
 					$plugin_fw_file = array_shift( $plugin_fw_data );
@@ -140,24 +139,24 @@ if( ! class_exists( 'YITH_WCAUTHNET' ) ){
 		 * @since 1.0.0
 		 */
 		public function privacy_loader() {
-			if( class_exists( 'YITH_Privacy_Plugin_Abstract' ) ) {
-				require_once( YITH_WCAUTHNET_INC . 'class.yith-wcauthnet-privacy.php' );
-				new YITH_WCAUTHNET_Privacy();
+			if( class_exists( 'PG_Privacy_Plugin_Abstract' ) ) {
+				require_once( PG_WCAUTHNET_INC . 'class.yith-wcauthnet-privacy.php' );
+				new PG_WCAUTHNET_Privacy();
 			}
 		}
 	}
 }
 
 /**
- * Unique access to instance of YITH_WCAUTHNET class
+ * Unique access to instance of PG_WCAUTHNET class
  *
- * @return \YITH_WCAUTHNET
+ * @return \PG_WCAUTHNET
  * @since 1.0.0
  */
-function YITH_WCAUTHNET(){
-	return YITH_WCAUTHNET::get_instance();
+function PG_WCAUTHNET(){
+	return PG_WCAUTHNET::get_instance();
 }
 
 // Let's start the game!
 // Create unique instance of the class
-YITH_WCAUTHNET();
+PG_WCAUTHNET();

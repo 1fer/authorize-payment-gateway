@@ -12,18 +12,17 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Plugin_SubPanel' ) ) {
+if ( !class_exists( 'PGA_Plugin_SubPanel' ) ) {
     /**
      * YIT Plugin Panel
      *
      * Setting Page to Manage Plugins
      *
-     * @class      YIT_Plugin_Panel
-     * @package    YITH
+     * @class      PGA_Plugin_Panel
      * @since      1.0
-     * @author     Your Inspiration Themes
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    class YIT_Plugin_SubPanel extends YIT_Plugin_Panel {
+    class PGA_Plugin_SubPanel extends PGA_Plugin_Panel {
 
         /**
          * @var string version of class
@@ -45,7 +44,7 @@ if ( !class_exists( 'YIT_Plugin_SubPanel' ) ) {
          * Constructor
          *
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
 
         public function __construct( $args = array() ) {
@@ -70,7 +69,7 @@ if ( !class_exists( 'YIT_Plugin_SubPanel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function register_settings() {
             register_setting( 'yit_' . $this->settings[ 'page' ] . '_options', 'yit_' . $this->settings[ 'page' ] . '_options', array( &$this, 'options_validate' ) );
@@ -84,7 +83,7 @@ if ( !class_exists( 'YIT_Plugin_SubPanel' ) ) {
          *
          * @return array validate input fields
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_setting_page() {
             global $admin_page_hooks;
@@ -114,7 +113,7 @@ if ( !class_exists( 'YIT_Plugin_SubPanel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function yit_panel() {
             $tabs        = '';

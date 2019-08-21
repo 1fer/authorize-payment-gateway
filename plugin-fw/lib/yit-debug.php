@@ -10,21 +10,20 @@
 
 !defined( 'ABSPATH' ) && exit; // Exit if accessed directly
 
-if ( !class_exists( 'YITH_Debug' ) ) {
+if ( !class_exists( 'PG_Debug' ) ) {
     /**
-     * YITH_Debug
+     * PG_Debug
      *
      * manages debug
      *
-     * @class       YITH_Debug
-     * @package     YITH
+     * @class       PG_Debug
      * @since       1.0.0
-     * @author      Leanza Francesco <leanzafrancesco@gmail.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      *
      */
-    class YITH_Debug {
+    class PG_Debug {
 
-        /** @var YITH_Debug */
+        /** @var PG_Debug */
         private static $_instance;
 
         public static function get_instance() {
@@ -33,7 +32,7 @@ if ( !class_exists( 'YITH_Debug' ) ) {
 
         /**
          * @access private
-         * @author Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         private function __construct() {
             add_action( 'init', array( $this, 'init' ) );
@@ -235,7 +234,7 @@ if ( !class_exists( 'YITH_Debug' ) ) {
          */
         public function get_plugin_framework_info() {
             $plugin_fw_version   = yith_plugin_fw_get_version();
-            $plugin_fw_loaded_by = basename( dirname( YIT_CORE_PLUGIN_PATH ) );
+            $plugin_fw_loaded_by = basename( dirname( PGA_CORE_PLUGIN_PATH ) );
 
             return "$plugin_fw_version (by $plugin_fw_loaded_by)";
         }
@@ -246,7 +245,7 @@ if ( !class_exists( 'YITH_Debug' ) ) {
          * @return array
          */
         public function get_premium_plugins_info() {
-            $plugins      = YIT_Plugin_Licence()->get_products();
+            $plugins      = PGA_Plugin_Licence()->get_products();
             $plugins_info = array();
 
             if ( !!$plugins ) {
@@ -261,10 +260,10 @@ if ( !class_exists( 'YITH_Debug' ) ) {
         }
     }
 }
-if ( !function_exists( 'YITH_Debug' ) ) {
-    function YITH_Debug() {
-        return YITH_Debug::get_instance();
+if ( !function_exists( 'PG_Debug' ) ) {
+    function PG_Debug() {
+        return PG_Debug::get_instance();
     }
 
-    YITH_Debug();
+    PG_Debug();
 }

@@ -21,7 +21,7 @@ if ( !function_exists( 'yit_plugin_locate_template' ) ) {
      * @param array  $var
      *
      * @return string
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_plugin_locate_template( $plugin_basename, $path, $var = null ) {
 
@@ -50,7 +50,7 @@ if ( !function_exists( 'yit_plugin_get_template' ) ) {
      * @param bool   $return
      *
      * @return string
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_plugin_get_template( $plugin_basename, $path, $var = null, $return = false ) {
 
@@ -86,7 +86,7 @@ if ( !function_exists( 'yit_plugin_content' ) ) {
      * @param string     $in_paragraph
      *
      * @return string
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_plugin_content( $what = 'content', $limit = 25, $more_text = '', $split = '[...]', $in_paragraph = 'true' ) {
         if ( $what == 'content' ) {
@@ -191,7 +191,7 @@ if ( !function_exists( 'yit_plugin_string' ) ) {
      * @param bool   $echo   If echo or only return it
      *
      * @return string The complete string, if the main string is not empty or null
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_plugin_string( $before = '', $string = '', $after = '', $echo = true ) {
         $html = '';
@@ -238,7 +238,7 @@ if ( !function_exists( 'yit_plugin_get_attachment_id' ) ) {
      *
      * @return int
      *
-     * @since 2.0.0
+     * @since 1.0.0
      */
 
     function yit_plugin_get_attachment_id( $url ) {
@@ -300,15 +300,15 @@ if ( !function_exists( 'yit_enqueue_script' ) ) {
      *
      * Registers the script if src provided (does NOT overwrite) and enqueues.
      *
-     * @since  2.0.0
-     * @author Simone D'Amico <simone.damico@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      * @see    yit_register_script() For parameter information.
      */
     function yit_enqueue_script( $handle, $src, $deps = array(), $ver = false, $in_footer = true ) {
 
-        if ( function_exists( 'YIT_Asset' ) && !is_admin() ) {
+        if ( function_exists( 'PGA_Asset' ) && !is_admin() ) {
             $enqueue = true;
-            YIT_Asset()->set( 'script', $handle, compact( 'src', 'deps', 'ver', 'in_footer', 'enqueue' ) );
+            PGA_Asset()->set( 'script', $handle, compact( 'src', 'deps', 'ver', 'in_footer', 'enqueue' ) );
         } else {
             wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
         }
@@ -321,22 +321,22 @@ if ( !function_exists( 'yit_enqueue_style' ) ) {
      *
      * Registers the style if src provided (does NOT overwrite) and enqueues.
      *
-     * @since  2.0.0
-     * @author Simone D'Amico <simone.damico@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      * @see    yit_register_style() For parameter information.
      */
     function yit_enqueue_style( $handle, $src, $deps = array(), $ver = false, $media = 'all' ) {
 
-        if ( function_exists( 'YIT_Asset' ) ) {
+        if ( function_exists( 'PGA_Asset' ) ) {
             $enqueue = true;
-            $who     = YIT_Asset()->get_stylesheet_handle( get_stylesheet_uri(), 'style' );
+            $who     = PGA_Asset()->get_stylesheet_handle( get_stylesheet_uri(), 'style' );
             $where   = 'before';
 
             if ( false == $who ) {
                 $who = '';
             }
 
-            YIT_Asset()->set( 'style', $handle, compact( 'src', 'deps', 'ver', 'media', 'enqueue' ), $where, $who );
+            PGA_Asset()->set( 'style', $handle, compact( 'src', 'deps', 'ver', 'media', 'enqueue' ), $where, $who );
         } else {
             wp_enqueue_style( $handle, $src, $deps, $ver, $media );
         }
@@ -353,7 +353,7 @@ if ( !function_exists( 'yit_get_post_meta' ) ) {
      * @param string $meta The meta key to retrieve.
      *
      * @return mixed Single value or array
-     * @since    2.0.0
+     * @since 1.0.0
      */
     function yit_get_post_meta( $id, $meta ) {
         if ( !strpos( $meta, '[' ) ) {
@@ -384,7 +384,7 @@ if ( !function_exists( 'yit_string' ) ) {
      * @param bool   $echo   If echo or only return it
      *
      * @return string The complete string, if the main string is not empty or null
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_string( $before = '', $string = '', $after = '', $echo = true ) {
         $html = '';
@@ -409,7 +409,7 @@ if ( !function_exists( 'yit_pagination' ) ) {
      * @param int    $range
      *
      * @return string
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_pagination( $pages = '', $range = 10 ) {
         $showitems = ( $range * 2 ) + 1;
@@ -472,7 +472,7 @@ if ( !function_exists( 'yit_registered_sidebars' ) ) {
      * Retrieve all registered sidebars
      *
      * @return array
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_registered_sidebars() {
         global $wp_registered_sidebars;
@@ -503,14 +503,14 @@ if ( !function_exists( 'yit_layout_option' ) ) {
      * @param string $model
      *
      * @return array
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yit_layout_option( $key, $id = false, $type = "post", $model = "post_type" ) {
 
         $option = '';
 
         if ( defined( 'YIT' ) ) {
-            $option = YIT_Layout_Panel()->get_option( $key, $id, $type, $model );
+            $option = PGA_Layout_Panel()->get_option( $key, $id, $type, $model );
         } else {
             if ( !$id && ( is_single() || is_page() ) ) {
                 global $post;
@@ -557,7 +557,7 @@ if ( !function_exists( 'yit_get_excluded_categories' ) ) {
      *
      * @return string String with all id categories excluded, separated by a comma
      *
-     * @since 2.0.0
+     * @since 1.0.0
      */
 
     function yit_get_excluded_categories( $k = 1 ) {
@@ -606,8 +606,8 @@ if ( !function_exists( 'yit_add_extra_theme_headers' ) ) {
      * @param $headers Array
      *
      * @return bool
-     * @since  2.0.0
-     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_add_extra_theme_headers( $headers ) {
         $headers[] = 'Core Framework Version';
@@ -621,16 +621,16 @@ if ( !function_exists( 'yit_check_plugin_support' ) ) {
      * Check the framework core version
      *
      * @return bool
-     * @since  2.0.0
-     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_check_plugin_support() {
 
         $headers[ 'core' ]   = wp_get_theme()->get( 'Core Framework Version' );
         $headers[ 'author' ] = wp_get_theme()->get( 'Author' );
 
-        if ( !$headers[ 'core' ] && defined( 'YIT_CORE_VERSION' ) ) {
-            $headers[ 'core' ] = YIT_CORE_VERSION;
+        if ( !$headers[ 'core' ] && defined( 'PGA_CORE_VERSION' ) ) {
+            $headers[ 'core' ] = PGA_CORE_VERSION;
         }
 
         if ( ( !empty( $headers[ 'core' ] ) && version_compare( $headers[ 'core' ], '2.0.0', '<=' ) ) || $headers[ 'author' ] != 'Your Inspiration Themes' ) {
@@ -647,7 +647,7 @@ if ( !function_exists( 'yit_ie_version' ) ) {
      *
      * @return int|float
      * @since  1.0.0
-     * @author Andrea Grillo <andrea.grillo@yithemes.com>, Andrea Frascaspata<andrea.frascaspata@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_ie_version() {
 
@@ -679,8 +679,8 @@ if ( !function_exists( 'yit_avoid_duplicate' ) ) {
      * @param string $check
      *
      * @return mixed
-     * @since  2.0.0
-     * @author Antonino Scarf� <antonino.scarfi@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_avoid_duplicate( $value, $array, $check = 'value' ) {
         $match = array();
@@ -796,8 +796,8 @@ if ( !function_exists( 'is_shop_installed' ) ) {
      * Detect if there is a shop plugin installed
      *
      * @return bool
-     * @since  2.0.0
-     * @author Francesco Grasso <francesco.grasso@yithemes.com
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function is_shop_installed() {
         global $woocommerce;
@@ -816,8 +816,8 @@ if ( !function_exists( 'yit_load_js_file' ) ) {
      * @param string $filename The file name
      *
      * @return string The file path
-     * @since  2.0.0
-     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_load_js_file( $filename ) {
 
@@ -837,8 +837,8 @@ if ( !function_exists( 'yit_wpml_register_string' ) ) {
      * @param $name     string name
      * @param $value    value to translate
      *
-     * @since  2.0.0
-     * @author Andrea Frascaspata <andrea.frascaspata@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_wpml_register_string( $contenxt, $name, $value ) {
         // wpml string translation
@@ -855,8 +855,8 @@ if ( !function_exists( 'yit_wpml_string_translate' ) ) {
      * @param $default_value    value to translate
      *
      * @return string the string translated
-     * @since  2.0.0
-     * @author Andrea Frascaspata <andrea.frascaspata@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_wpml_string_translate( $contenxt, $name, $default_value ) {
         return apply_filters( 'wpml_translate_single_string', $default_value, $contenxt, $name );
@@ -874,8 +874,8 @@ if ( !function_exists( 'yit_wpml_object_id' ) ) {
      * @param null|string $ulanguage_code
      *
      * @return int the translation id
-     * @since  2.0.0
-     * @author Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @since  1.0.0
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     function yit_wpml_object_id( $element_id, $element_type = 'post', $return_original_if_missing = false, $ulanguage_code = null ) {
         if ( function_exists( 'wpml_object_id_filter' ) ) {
@@ -963,7 +963,7 @@ if ( !function_exists( 'yith_field_deps_data' ) ) {
 if ( !function_exists( 'yith_panel_field_deps_data' ) ) {
     /**
      * @param                                               $option
-     * @param YIT_Plugin_Panel|YIT_Plugin_Panel_WooCommerce $panel
+     * @param PGA_Plugin_Panel|PGA_Plugin_Panel_WooCommerce $panel
      *
      * @return string
      */
@@ -1035,7 +1035,7 @@ if ( !function_exists( 'yith_plugin_fw_get_field_template_path' ) ) {
         if ( empty( $field[ 'type' ] ) )
             return false;
 
-        $field_template = YIT_CORE_PLUGIN_TEMPLATE_PATH . '/fields/' . sanitize_title( $field[ 'type' ] ) . '.php';
+        $field_template = PGA_CORE_PLUGIN_TEMPLATE_PATH . '/fields/' . sanitize_title( $field[ 'type' ] ) . '.php';
 
         $field_template = apply_filters( 'yith_plugin_fw_get_field_template_path', $field_template, $field );
 
@@ -1064,7 +1064,7 @@ if ( !function_exists( 'yith_plugin_fw_html_data_to_string' ) ) {
 
 if ( !function_exists( 'yith_plugin_fw_get_icon' ) ) {
     function yith_plugin_fw_get_icon( $icon = '', $args = array() ) {
-        return YIT_Icons()->get_icon( $icon, $args );
+        return PGA_Icons()->get_icon( $icon, $args );
     }
 }
 
@@ -1125,7 +1125,7 @@ if ( !function_exists( 'yit_add_select2_fields' ) ) {
             $select2_template_name = 'select2-wc-2.6.php';
         }
 
-        $template = YIT_CORE_PLUGIN_TEMPLATE_PATH . '/fields/resources/' . $select2_template_name;
+        $template = PGA_CORE_PLUGIN_TEMPLATE_PATH . '/fields/resources/' . $select2_template_name;
         if ( file_exists( $template ) ) {
             include $template;
         }
@@ -1134,7 +1134,7 @@ if ( !function_exists( 'yit_add_select2_fields' ) ) {
 
 if ( !function_exists( 'yith_plugin_fw_get_version' ) ) {
     function yith_plugin_fw_get_version() {
-        $plugin_fw_data = get_file_data( trailingslashit( YIT_CORE_PLUGIN_PATH ) . 'init.php', array( 'Version' => 'Version' ) );
+        $plugin_fw_data = get_file_data( trailingslashit( PGA_CORE_PLUGIN_PATH ) . 'init.php', array( 'Version' => 'Version' ) );
         return $plugin_fw_data[ 'Version' ];
     }
 }
@@ -1145,7 +1145,7 @@ if ( !function_exists( 'yith_get_premium_support_url' ) ) {
      * Return the url for My Account > Support dashboard
      *
      * @return string The complete string, if the main string is not empty or null
-     * @since 2.0.0
+     * @since 1.0.0
      */
     function yith_get_premium_support_url() {
         return 'https://yithemes.com/my-account/support/dashboard/';
@@ -1169,7 +1169,7 @@ if( ! function_exists( 'yith_plugin_fw_force_regenerate_plugin_update_transient'
 	 *
 	 * @since  1.0
 	 * @see    update_plugins transient and pre_set_site_transient_update_plugins hooks
-	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	function yith_plugin_fw_force_regenerate_plugin_update_transient() {
 		delete_site_transient( 'update_plugins' );
@@ -1180,7 +1180,7 @@ if( ! function_exists( 'yith_plugin_fw_force_regenerate_plugin_update_transient'
 
 if( ! function_exists( 'yith_plugin_fw_is_gutenberg_enabled' ) ){
 	function yith_plugin_fw_is_gutenberg_enabled(){
-		return function_exists( 'YITH_Gutenberg' );
+		return function_exists( 'PG_Gutenberg' );
 	}
 }
 
@@ -1191,17 +1191,17 @@ if( ! function_exists( 'yith_plugin_fw_gutenberg_add_blocks' ) ){
 	 * @param $blocks string|array new blocks
 	 * @return bool true if add a new blocks, false otherwise
 	 *
-	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	function yith_plugin_fw_gutenberg_add_blocks( $blocks ){
 		$added = false;
 		if( yith_plugin_fw_is_gutenberg_enabled() ) {
 			// ADD Blocks
-			$added = YITH_Gutenberg()->add_blocks( $blocks );
+			$added = PG_Gutenberg()->add_blocks( $blocks );
 
 			//ADD Blocks arguments
 			if( $added ){
-				YITH_Gutenberg()->set_block_args( $blocks );
+				PG_Gutenberg()->set_block_args( $blocks );
 			}
 		}
 
@@ -1216,7 +1216,7 @@ if( ! function_exists( 'yith_plugin_fw_gutenberg_get_registered_blocks' ) ){
 	 * @return array
 	 */
 	function yith_plugin_fw_gutenberg_get_registered_blocks(){
-		return yith_plugin_fw_is_gutenberg_enabled() ? YITH_Gutenberg()->get_registered_blocks() : array();
+		return yith_plugin_fw_is_gutenberg_enabled() ? PG_Gutenberg()->get_registered_blocks() : array();
 	}
 }
 
@@ -1227,7 +1227,7 @@ if( ! function_exists( 'yith_plugin_fw_gutenberg_get_to_register_blocks' ) ){
 	 * @return array
 	 */
 	function yith_plugin_fw_gutenberg_get_to_register_blocks(){
-		return yith_plugin_fw_is_gutenberg_enabled() ? YITH_Gutenberg()->get_to_register_blocks() : array();
+		return yith_plugin_fw_is_gutenberg_enabled() ? PG_Gutenberg()->get_to_register_blocks() : array();
 	}
 }
 
@@ -1238,7 +1238,7 @@ if( ! function_exists( 'yith_plugin_fw_get_default_logo' ) ){
 	 * @return string default logo image url
 	 */
 	function yith_plugin_fw_get_default_logo(){
-		return YIT_CORE_PLUGIN_URL . '/assets/images/yith-icon.svg';
+		return PGA_CORE_PLUGIN_URL . '/assets/images/yith-icon.svg';
 	}
 }
 
@@ -1250,7 +1250,7 @@ if ( ! function_exists( 'yith_set_wrapper_class' ) ) {
 	 *
 	 * @return string
 	 *
-	 * @author Emanuela Castorina
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	function yith_set_wrapper_class( $class = '' ) {
 		$new_class = 'yith-plugin-ui';
@@ -1263,8 +1263,8 @@ if ( ! function_exists( 'yith_set_wrapper_class' ) ) {
 if( ! function_exists('yith_get_date_format') ){
 	/**
 	 * get all available date format
-	 * @since 3.1
-	 * @author Salvatore Strano
+     * @since 1.0.0
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 * @return array
 	 */
 
@@ -1297,8 +1297,8 @@ if( ! function_exists('yith_format_toggle_title') ) {
 	 * for toggle element field.
 	 *
 	 * @return array
-	 * @author Salvatore Strano
-	 * @since 3.1
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+     * @since 1.0.0
 	 */
 
 	function yith_format_toggle_title( $title, $value ) {
@@ -1319,7 +1319,7 @@ if( ! function_exists( 'yith_plugin_fw_load_update_and_licence_files' ) ){
 	/**
 	 * Load premium file for license and update system
 	 *
-	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 *
 	 * @return void
 	 */
@@ -1364,8 +1364,8 @@ if ( ! function_exists( 'yith_plugin_fw_remove_duplicate_classes' ) ) {
 	 *
 	 * @return string
 	 *
-	 * @since 3.2.2
-	 * @author Emanuela Castorina <emanuela.castorina@yithemes.com>
+     * @since 1.0.0
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	function yith_plugin_fw_remove_duplicate_classes( $classes ) {
 		$class_array  = explode( ' ', $classes );
@@ -1382,7 +1382,7 @@ if ( ! function_exists( 'yith_plugin_fw_add_requirements' ) ) {
 
 	function yith_plugin_fw_add_requirements( $plugin_name, $requirements ) {
 		if ( ! empty( $requirements ) ) {
-			YITH_System_Status()->add_requirements( $plugin_name, $requirements );
+			PG_System_Status()->add_requirements( $plugin_name, $requirements );
 
 
 		}

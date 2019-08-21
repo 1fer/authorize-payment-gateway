@@ -2,9 +2,8 @@
 /**
  * Uninstall plugin
  *
- * @author Your Inspiration Themes
- * @package YITH WooCommerce Wishlist
- * @version 1.1.5
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+ * @version 1.0.0
  */
 
 // If uninstall not called from WordPress exit

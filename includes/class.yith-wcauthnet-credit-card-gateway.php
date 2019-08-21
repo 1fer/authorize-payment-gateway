@@ -18,22 +18,21 @@
 /**
  * Gateway class
  *
- * @author Your Inspiration Themes
- * @package YITH WooCommerce Authorize.net
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  * @version 1.0.0
  */
 
-if ( ! defined( 'YITH_WCAUTHNET' ) ) {
+if ( ! defined( 'PG_WCAUTHNET' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
+if( ! class_exists( 'PG_WCAUTHNET_Credit_Card_Gateway' ) ){
 	/**
 	 * WooCommerce Authorize.net gateway class
 	 *
 	 * @since 1.0.0
 	 */
-	class YITH_WCAUTHNET_Credit_Card_Gateway extends WC_Payment_Gateway_CC {
+	class PG_WCAUTHNET_Credit_Card_Gateway extends WC_Payment_Gateway_CC {
 
 		/**
 		 * @const Sandbox payment url
@@ -57,7 +56,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 		/**
 		 * Single instance of the class
 		 *
-		 * @var \YITH_WCAUTHNET_Credit_Card_Gateway
+		 * @var \PG_WCAUTHNET_Credit_Card_Gateway
 		 * @since 1.0.0
 		 */
 		protected static $instance;
@@ -65,7 +64,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 		/**
 		 * Returns single instance of the class
 		 *
-		 * @return \YITH_WCAUTHNET_Credit_Card_Gateway
+		 * @return \PG_WCAUTHNET_Credit_Card_Gateway
 		 * @since 1.0.0
 		 */
 		public static function get_instance(){
@@ -80,7 +79,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 		 * Constructor.
 		 *
 		 * @param array $details
-		 * @return \YITH_WCAUTHNET_Credit_Card_Gateway
+		 * @return \PG_WCAUTHNET_Credit_Card_Gateway
 		 * @since 1.0.0
 		 */
 		public function __construct() {
@@ -129,7 +128,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 		 * Print payment method fields (if any)
 		 *
 		 * @return void
-		 * @since 1.0.10
+		 * @since 1.0.0
 		 */
 		public function payment_fields() {
 			if ( $description = $this->get_description() ) {
@@ -263,8 +262,8 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 				// display icons for the selected card types
 				foreach ( $this->card_types as $card_type ) {
 
-					if ( file_exists( YITH_WCAUTHNET_DIR . 'assets/images/icons/credit-cards/' . strtolower( $card_type ) . '.png' ) ) {
-						$icon .= '<img src="' . esc_url( WC_HTTPS::force_https_url( YITH_WCAUTHNET_URL ) . '/assets/images/icons/credit-cards/' . strtolower( $card_type ) . '.png' ) . '" alt="' . esc_attr( strtolower( $card_type ) ) . '" />';
+					if ( file_exists( PG_WCAUTHNET_DIR . 'assets/images/icons/credit-cards/' . strtolower( $card_type ) . '.png' ) ) {
+						$icon .= '<img src="' . esc_url( WC_HTTPS::force_https_url( PG_WCAUTHNET_URL ) . '/assets/images/icons/credit-cards/' . strtolower( $card_type ) . '.png' ) . '" alt="' . esc_attr( strtolower( $card_type ) ) . '" />';
 					}
 
 				}
@@ -298,7 +297,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 
 			<?php if( empty( $this->login_id ) || empty( $this->transaction_key ) ): ?>
 				<div class="simplify-commerce-banner updated">
-					<img alt="<?php _e( 'Authorize.net', 'yith-woocommerce-authorizenet-payment-gateway' ) ?>" src="<?php echo YITH_WCAUTHNET_URL . '/assets/images/logo.jpg'; ?>" style="width: 300px" />
+					<img alt="<?php _e( 'Authorize.net', 'yith-woocommerce-authorizenet-payment-gateway' ) ?>" src="<?php echo PG_WCAUTHNET_URL . '/assets/images/logo.jpg'; ?>" style="width: 300px" />
 					<p class="main"><strong><?php _e( 'Getting started', 'yith-woocommerce-authorizenet-payment-gateway' ); ?></strong></p>
 					<p><?php _e( 'An Authorize.Net Payment Gateway account allows you to accept credit cards and electronic checks from websites and Internet auction sites. Our solutions are designed to save time and money for small- to medium-sized businesses.', 'yith-woocommerce-authorizenet-payment-gateway' ); ?></p>
 
@@ -390,7 +389,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 			$template = locate_template( $locations );
 
 			if( ! $template ){
-				$template = YITH_WCAUTHNET_DIR . 'templates/' . $template_name;
+				$template = PG_WCAUTHNET_DIR . 'templates/' . $template_name;
 			}
 
 			include_once( $template );
@@ -529,11 +528,11 @@ if( ! class_exists( 'YITH_WCAUTHNET_Credit_Card_Gateway' ) ){
 }
 
 /**
- * Unique access to instance of YITH_WCAUTHNET_Credit_Card_Gateway class
+ * Unique access to instance of PG_WCAUTHNET_Credit_Card_Gateway class
  *
- * @return \YITH_WCAUTHNET_Credit_Card_Gateway
+ * @return \PG_WCAUTHNET_Credit_Card_Gateway
  * @since 1.0.0
  */
-function YITH_WCAUTHNET_Credit_Card_Gateway(){
-	return YITH_WCAUTHNET_Credit_Card_Gateway::get_instance();
+function PG_WCAUTHNET_Credit_Card_Gateway(){
+	return PG_WCAUTHNET_Credit_Card_Gateway::get_instance();
 }

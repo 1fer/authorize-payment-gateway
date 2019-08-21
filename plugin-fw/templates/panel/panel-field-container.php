@@ -11,9 +11,8 @@
 /**
  * Field Container for YIT Panel
  *
- * @package    YITH
- * @author     Leanza Francesco <leanzafrancesco@gmail.com>
- * @since      3.0.0
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+ * @since      1.0.0
  */
 
 !defined( 'ABSPATH' ) && exit; // Exit if accessed directly

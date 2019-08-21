@@ -18,27 +18,26 @@
 /**
  * Admin class
  *
- * @author Your Inspiration Themes
- * @package YITH WooCommerce Authorize.net
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  * @version 1.0.0
  */
 
-if ( ! defined( 'YITH_WCAUTHNET' ) ) {
+if ( ! defined( 'PG_WCAUTHNET' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
+if( ! class_exists( 'PG_WCAUTHNET_Admin' ) ) {
 	/**
 	 * WooCommerce Authorize.net admin class
 	 *
 	 * @since 1.0.0
 	 */
-	class YITH_WCAUTHNET_Admin{
+	class PG_WCAUTHNET_Admin{
 
 		/**
 		 * Single instance of the class
 		 *
-		 * @var \YITH_WCAUTHNET_Admin
+		 * @var \PG_WCAUTHNET_Admin
 		 * @since 1.0.0
 		 */
 		protected static $instance;
@@ -56,7 +55,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		/**
 		 * Returns single instance of the class
 		 *
-		 * @return \YITH_WCAUTHNET_Admin
+		 * @return \PG_WCAUTHNET_Admin
 		 * @since 1.0.0
 		 */
 		public static function get_instance(){
@@ -70,7 +69,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		/**
 		 * Constructor method
 		 *
-		 * @return \YITH_WCAUTHNET_Admin
+		 * @return \PG_WCAUTHNET_Admin
 		 * @since 1.0.0
 		 */
 		public function __construct() {
@@ -90,7 +89,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 
 			//Add action links
 			add_filter( 'yith_show_plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 5 );
-			add_filter( 'plugin_action_links_' . plugin_basename( YITH_WCAUTHNET_DIR . '/' . basename( YITH_WCAUTHNET_FILE ) ), array( $this, 'action_links' ) );
+			add_filter( 'plugin_action_links_' . plugin_basename( PG_WCAUTHNET_DIR . '/' . basename( PG_WCAUTHNET_FILE ) ), array( $this, 'action_links' ) );
 
             //  Show plugin premium tab
             add_action( 'yith_authorizenet_premium', array( $this, 'premium_tab' ) );
@@ -100,11 +99,11 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		 * Get the premium landing uri
 		 *
 		 * @since   1.0.0
-		 * @author  Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 * @return  string The premium landing link
 		 */
 		public function get_premium_landing_uri(){
-			return defined( 'YITH_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . YITH_REFER_ID : $this->_premium_landing;
+			return defined( 'PG_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . PG_REFER_ID : $this->_premium_landing;
 		}
 
 		/**
@@ -124,15 +123,15 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 				'parent_page'   => 'yith_plugin_panel',
 				'page'          => 'yith_wcauthnet_panel',
 				'admin-tabs'    => apply_filters( 'yith_wcauthnet_available_tabs', $this->admin_tabs ),
-				'options-path'  => YITH_WCAUTHNET_DIR . 'plugin-options'
+				'options-path'  => PG_WCAUTHNET_DIR . 'plugin-options'
 			);
 
 			/* === Fixed: not updated theme  === */
-			if( ! class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
-				require_once( YITH_WCAUTHNET_DIR . 'plugin-fw/lib/yit-plugin-panel-wc.php' );
+			if( ! class_exists( 'PGA_Plugin_Panel_WooCommerce' ) ) {
+				require_once( PG_WCAUTHNET_DIR . 'plugin-fw/lib/yit-plugin-panel-wc.php' );
 			}
 
-			$this->_panel = new YIT_Plugin_Panel_WooCommerce( $args );
+			$this->_panel = new PGA_Plugin_Panel_WooCommerce( $args );
 		}
 
 		/**
@@ -142,7 +141,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		 * @since 1.0.0
 		 */
 		public function print_credit_card_panel() {
-			if( file_exists( YITH_WCAUTHNET_DIR . '/templates/admin/settings-tab.php' ) ){
+			if( file_exists( PG_WCAUTHNET_DIR . '/templates/admin/settings-tab.php' ) ){
 
 				global $current_section;
 				$current_section = 'yith_wcauthnet_credit_card_gateway';
@@ -150,10 +149,10 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 				WC_Admin_Settings::get_settings_pages();
 
 				if( ! empty( $_POST ) ) {
-					YITH_WCAUTHNET_Credit_Card_Gateway()->process_admin_options();
+					PG_WCAUTHNET_Credit_Card_Gateway()->process_admin_options();
 				}
 
-				include_once( YITH_WCAUTHNET_DIR . '/templates/admin/settings-tab.php' );
+				include_once( PG_WCAUTHNET_DIR . '/templates/admin/settings-tab.php' );
 			}
 		}
 
@@ -166,12 +165,12 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		 *
 		 * @return   mixed Array
 		 * @since    1.0
-		 * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 * @return mixed
 		 * @use plugin_action_links_{$plugin_file_name}
 		 */
 		public function action_links( $links ) {
-			$links = yith_add_action_links( $links, 'yith_wcauthnet_panel', defined( 'YITH_WCAUTHNET_PREMIUM' ) );
+			$links = yith_add_action_links( $links, 'yith_wcauthnet_panel', defined( 'PG_WCAUTHNET_PREMIUM' ) );
 			return $links;
 		}
 
@@ -187,16 +186,16 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		 *
 		 * @return   Array
 		 * @since    1.0
-		 * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 * @use plugin_row_meta
 		 */
-		public function plugin_row_meta( $new_row_meta_args, $plugin_meta, $plugin_file, $plugin_data, $status, $init_file = 'YITH_WCAUTHNET_INIT' ) {
+		public function plugin_row_meta( $new_row_meta_args, $plugin_meta, $plugin_file, $plugin_data, $status, $init_file = 'PG_WCAUTHNET_INIT' ) {
 			if ( defined( $init_file ) && constant( $init_file ) == $plugin_file ) {
-				$new_row_meta_args['slug'] = YITH_WCAUTHNET_SLUG;
+				$new_row_meta_args['slug'] = PG_WCAUTHNET_SLUG;
 				$new_row_meta_args['live_demo']['url'] = $this->_live_demo;
 			}
 
-			if ( defined( 'YITH_WCAUTHNET_PREMIUM' ) ) {
+			if ( defined( 'PG_WCAUTHNET_PREMIUM' ) ) {
 				$new_row_meta_args['is_premium'] = true;
 
 			}
@@ -211,7 +210,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 		 */
 		public function register_pointer() {
 
-			if( ! class_exists( 'YIT_Pointers' ) ){
+			if( ! class_exists( 'PGA_Pointers' ) ){
 				include_once( '../plugin-fw/lib/yit-pointers.php' );
 			}
 
@@ -224,10 +223,10 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 					apply_filters( 'yith_wcauthnet_activated_pointer_content', sprintf( __( 'In the YIT Plugins tab you can find the YITH WooCommerce Authorize.net options. From this menu, you can access all the settings of the YITH plugins activated. YITH Authorize.net is available in an outstanding PREMIUM version with many new options, <a href="%s">discover it now</a>.', 'yith-woocommerce-authorizenet-payment-gateway' ), $this->get_premium_landing_uri() ) )
 				),
 				'position'   => array( 'edge' => 'left', 'align' => 'center' ),
-				'init'  => YITH_WCAUTHNET_INIT
+				'init'  => PG_WCAUTHNET_INIT
 			);
 
-			YIT_Pointers()->register( $args );
+			PGA_Pointers()->register( $args );
 		}
 
         /**
@@ -237,11 +236,11 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
          *
          * @return   void
          * @since    1.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          * @return void
          */
         public function premium_tab() {
-            $premium_tab_template = YITH_WCAUTHNET_DIR . 'templates/admin/premium.php';
+            $premium_tab_template = PG_WCAUTHNET_DIR . 'templates/admin/premium.php';
             if ( file_exists( $premium_tab_template ) ) {
                 include_once( $premium_tab_template );
             }
@@ -250,11 +249,11 @@ if( ! class_exists( 'YITH_WCAUTHNET_Admin' ) ) {
 }
 
 /**
- * Unique access to instance of YITH_WCAUTHNET_Admin class
+ * Unique access to instance of PG_WCAUTHNET_Admin class
  *
- * @return \YITH_WCAUTHNET_Admin
+ * @return \PG_WCAUTHNET_Admin
  * @since 1.0.0
  */
-function YITH_WCAUTHNET_Admin(){
-	return YITH_WCAUTHNET_Admin::get_instance();
+function PG_WCAUTHNET_Admin(){
+	return PG_WCAUTHNET_Admin::get_instance();
 }

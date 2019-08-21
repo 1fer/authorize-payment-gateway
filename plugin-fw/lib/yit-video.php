@@ -13,20 +13,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( ! class_exists( 'YIT_Video' ) ) {
+if ( ! class_exists( 'PGA_Video' ) ) {
     /**
      * YIT Video
      *
      * Class to manage the video from youtube and vimeo or other services
      *
-     * @class YIT_Video
-     * @package    YITH
+     * @class PGA_Video
      * @since      1.0.0
-     * @author     Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      *
      */
 
-    class YIT_Video {
+    class PGA_Video {
 
         /**
          * Generate the HTML for a youtube video
@@ -37,7 +36,7 @@ if ( ! class_exists( 'YIT_Video' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function youtube( $args = array() ) {
             $defaults = array(
@@ -83,7 +82,7 @@ if ( ! class_exists( 'YIT_Video' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function vimeo( $args = array() ) {
             $defaults = array(
@@ -130,7 +129,7 @@ if ( ! class_exists( 'YIT_Video' ) ) {
          *
          * @return bool|string
          * @since  1.0
-         * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function video_id_by_url( $url ) {
             $parsed = parse_url( esc_url( $url ) );
@@ -171,7 +170,7 @@ if ( ! class_exists( 'YIT_Video' ) ) {
          *
          * @return bool|string
          * @since  1.0
-         * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         protected static function youtube_id_by_url( $url ) {
             if ( preg_match( '/http(s)?:\/\/youtu.be/', $url, $matches) ) {

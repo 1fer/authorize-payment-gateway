@@ -21,7 +21,7 @@ if( ! function_exists( 'yith_plugin_fw_promo_notices' ) ){
 	        return false;
         }
 
-		$base_url                   = apply_filters( 'yith_plugin_fw_promo_base_url', YIT_CORE_PLUGIN_PATH . '/lib/promo/' );
+		$base_url                   = apply_filters( 'yith_plugin_fw_promo_base_url', PGA_CORE_PLUGIN_PATH . '/lib/promo/' );
 		$xml                        = apply_filters( 'yith_plugin_fw_promo_xml_url', $base_url . 'yith-promo.xml' );
 		$transient                  = "yith_promo_message";
 		$remote_data                = get_site_transient( $transient );
@@ -38,7 +38,7 @@ if( ! function_exists( 'yith_plugin_fw_promo_notices' ) ){
 			$promo_data = @simplexml_load_string( $remote_data );
 			if( true === $create_transient ){
 				$is_membership_user = false;
-				$license            = function_exists( 'YITH_Plugin_Licence' ) ? YITH_Plugin_Licence()->get_licence() : array();
+				$license            = function_exists( 'PG_Plugin_Licence' ) ? PG_Plugin_Licence()->get_licence() : array();
 				$xml_expiry_date    = '';
 
 				if( is_array( $license ) && apply_filters( 'yith_plugin_fw_check_for_membership_user', true ) ){
@@ -168,7 +168,7 @@ if( ! function_exists( 'yith_plugin_fw_promo_notices' ) ){
 
 if( ! function_exists( 'yith_plugin_fw_notice_dismiss' ) ){
 	function yith_plugin_fw_notice_dismiss(){
-		$script_path = defined( 'YIT_CORE_PLUGIN_URL' ) ? YIT_CORE_PLUGIN_URL : get_template_directory_uri() . '/core/plugin-fw';
+		$script_path = defined( 'PGA_CORE_PLUGIN_URL' ) ? PGA_CORE_PLUGIN_URL : get_template_directory_uri() . '/core/plugin-fw';
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		wp_register_script( 'yith-promo', $script_path . '/assets/js/yith-promo' . $suffix . '.js', array( 'jquery' ), '1.0.0', true );
 	}

@@ -1,36 +1,16 @@
 <?php
 /**
- * Plugin Name: YITH WooCommerce Authorize.net Payment Gateway
- * Plugin URI: https://yithemes.com/themes/plugins/yith-woocommerce-authorize-net/
- * Description: <code><strong>YITH WooCommerce Authorize.net Payment Gateway</strong></code> adds a new gateway to your e-commerce allowing you to accept payments through credit cards and process transactions with Authorize.net reliability. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce on <strong>YITH</strong></a>
- * Version: 1.1.12
- * Author: YITH
- * Author URI: https://yithemes.com/
- * Text Domain: yith-woocommerce-authorizenet-payment-gateway
- * Domain Path: /languages/
+ * Plugin Name: WooCommerce Authorize.net Payment Gateway
+ * Description: Custom paymnet gateway for Authorize.net
+ * Version: 1.0.0
+ * Author: Panevnyk Roman
+ * 
  * WC requires at least: 2.5.0
  * WC tested up to: 3.7.0
  *
- * @author Your Inspiration Themes
- * @package YITH WooCommerce Authorize.net
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  * @version 1.0.0
  */
-
-/*  Copyright 2013  Your Inspiration Themes  (email : plugins@yithemes.com)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
 
 if( ! defined( 'ABSPATH' ) ){
 	exit;
@@ -42,47 +22,47 @@ if ( ! function_exists( 'yith_plugin_registration_hook' ) ) {
 }
 register_activation_hook( __FILE__, 'yith_plugin_registration_hook' );
 
-if ( ! defined( 'YITH_WCAUTHNET' ) ) {
-	define( 'YITH_WCAUTHNET', true );
+if ( ! defined( 'PG_WCAUTHNET' ) ) {
+	define( 'PG_WCAUTHNET', true );
 }
 
-if( ! defined( 'YITH_WCAUTHNET_VERSION' ) ){
-	define( 'YITH_WCAUTHNET_VERSION', '1.1.12' );
+if( ! defined( 'PG_WCAUTHNET_VERSION' ) ){
+	define( 'PG_WCAUTHNET_VERSION', '1.1.12' );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_URL' ) ) {
-	define( 'YITH_WCAUTHNET_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( 'PG_WCAUTHNET_URL' ) ) {
+	define( 'PG_WCAUTHNET_URL', plugin_dir_url( __FILE__ ) );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_DIR' ) ) {
-	define( 'YITH_WCAUTHNET_DIR', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'PG_WCAUTHNET_DIR' ) ) {
+	define( 'PG_WCAUTHNET_DIR', plugin_dir_path( __FILE__ ) );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_INIT' ) ) {
-	define( 'YITH_WCAUTHNET_INIT', plugin_basename( __FILE__ ) );
+if ( ! defined( 'PG_WCAUTHNET_INIT' ) ) {
+	define( 'PG_WCAUTHNET_INIT', plugin_basename( __FILE__ ) );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_FREE_INIT' ) ) {
-	define( 'YITH_WCAUTHNET_FREE_INIT', plugin_basename( __FILE__ ) );
+if ( ! defined( 'PG_WCAUTHNET_FREE_INIT' ) ) {
+	define( 'PG_WCAUTHNET_FREE_INIT', plugin_basename( __FILE__ ) );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_FILE' ) ) {
-	define( 'YITH_WCAUTHNET_FILE', __FILE__ );
+if ( ! defined( 'PG_WCAUTHNET_FILE' ) ) {
+	define( 'PG_WCAUTHNET_FILE', __FILE__ );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_INC' ) ) {
-	define( 'YITH_WCAUTHNET_INC', YITH_WCAUTHNET_DIR . 'includes/' );
+if ( ! defined( 'PG_WCAUTHNET_INC' ) ) {
+	define( 'PG_WCAUTHNET_INC', PG_WCAUTHNET_DIR . 'includes/' );
 }
 
-if ( ! defined( 'YITH_WCAUTHNET_SLUG' ) ) {
-	define( 'YITH_WCAUTHNET_SLUG', 'yith-woocommerce-authorizenet-payment-gateway' );
+if ( ! defined( 'PG_WCAUTHNET_SLUG' ) ) {
+	define( 'PG_WCAUTHNET_SLUG', 'yith-woocommerce-authorizenet-payment-gateway' );
 }
 
 /* Plugin Framework Version Check */
-if( ! function_exists( 'yit_maybe_plugin_fw_loader' ) && file_exists( YITH_WCAUTHNET_DIR . 'plugin-fw/init.php' ) ) {
-	require_once( YITH_WCAUTHNET_DIR . 'plugin-fw/init.php' );
+if( ! function_exists( 'yit_maybe_plugin_fw_loader' ) && file_exists( PG_WCAUTHNET_DIR . 'plugin-fw/init.php' ) ) {
+	require_once( PG_WCAUTHNET_DIR . 'plugin-fw/init.php' );
 }
-yit_maybe_plugin_fw_loader( YITH_WCAUTHNET_DIR  );
+yit_maybe_plugin_fw_loader( PG_WCAUTHNET_DIR  );
 
 if( ! function_exists( 'yith_wcauthnet_constructor' ) ) {
 	function yith_wcauthnet_constructor(){
@@ -91,13 +71,13 @@ if( ! function_exists( 'yith_wcauthnet_constructor' ) ) {
 		// Load required classes and functions
 		$sub_path = version_compare( WC()->version, '2.6', '<' ) ? 'legacy/' : '';
 
-		require_once( YITH_WCAUTHNET_INC . $sub_path . 'class.yith-wcauthnet-credit-card-gateway.php' );
-		require_once( YITH_WCAUTHNET_INC . 'class.yith-wcauthnet.php' );
+		require_once( PG_WCAUTHNET_INC . $sub_path . 'class.yith-wcauthnet-credit-card-gateway.php' );
+		require_once( PG_WCAUTHNET_INC . 'class.yith-wcauthnet.php' );
 
 		if( is_admin() ){
-			require_once( YITH_WCAUTHNET_INC . 'class.yith-wcauthnet-admin.php' );
+			require_once( PG_WCAUTHNET_INC . 'class.yith-wcauthnet-admin.php' );
 
-			YITH_WCAUTHNET_Admin();
+			PG_WCAUTHNET_Admin();
 		}
 	}
 }

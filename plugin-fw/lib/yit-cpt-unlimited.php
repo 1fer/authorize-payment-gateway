@@ -13,14 +13,13 @@ if (!defined('ABSPATH')) {exit('Direct access forbidden.');
 /**
  * Manage the custom post types as Portfolio, Contact Forms and similar (called CPTU)
  *
- * @class YIT_CPT_Unlimited
- * @package	YITH
- * @since 2.0.0
- * @author Your Inspiration Themes
+ * @class PGA_CPT_Unlimited
+ * @since 1.0.0
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  *
  */
 
-class YIT_CPT_Unlimited {
+class PGA_CPT_Unlimited {
 
     /**
      * @var string The name of main post type of CPTU
@@ -88,7 +87,7 @@ class YIT_CPT_Unlimited {
      * Accept an array of arguments to define the characteristics of CPTU to register.
      *
      * @since 1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function __construct( $args = array() ) {
 
@@ -205,7 +204,7 @@ class YIT_CPT_Unlimited {
 	 *
 	 * @return void
 	 * @since 1.0
-	 * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	public function admin_sortable_assets() {
 		global $post;
@@ -214,7 +213,7 @@ class YIT_CPT_Unlimited {
 			return;
 		}
 
-		wp_enqueue_script( 'yit-cptu-sortable-posts', YIT_CORE_PLUGIN_URL . '/assets/js/yit-cptu-sortable-posts.js', array( 'jquery', 'jquery-ui-sortable' ), '1.0', true );
+		wp_enqueue_script( 'yit-cptu-sortable-posts', PGA_CORE_PLUGIN_URL . '/assets/js/yit-cptu-sortable-posts.js', array( 'jquery', 'jquery-ui-sortable' ), '1.0', true );
 	}
 
 	public function init_menu_order( $post_types = array() ) {
@@ -253,7 +252,7 @@ class YIT_CPT_Unlimited {
 	 *
 	 * @return void
 	 * @since 1.0
-	 * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	public function sort_posts() {
 		global $wpdb;
@@ -340,7 +339,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since  1.0
-     * @author Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function sorted_next_post_where( $where ){
         global $post;
@@ -368,7 +367,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since  1.0
-     * @author Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function sorted_prev_post_where( $where ){
         global $post;
@@ -397,7 +396,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since    1.0
-     * @author   Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function sorted_next_post_sort( $sort ){
         global $post;
@@ -424,7 +423,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since    1.0
-     * @author   Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function sorted_prev_post_sort( $sort ){
         global $post;
@@ -451,7 +450,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since 1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function register_post_type() {
         $labels = array(
@@ -497,7 +496,7 @@ class YIT_CPT_Unlimited {
      *
      * @return array
      * @since 1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     protected function _cpt_args( $post ) {
         if ( ! isset( $post->ID ) ) {
@@ -531,7 +530,7 @@ class YIT_CPT_Unlimited {
      *
      * @return array The link changed
      * @since 1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function get_post_types() {
         if ( ! empty( $this->post_types ) ) {
@@ -555,7 +554,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since 1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function register_cptu_post_types() {
         $post_types = $this->get_post_types();
@@ -663,7 +662,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since 1.0
-     * @author Emanuela Castorina <emanuela.castorina@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
 
     public function rewrite_flush( $post ){
@@ -679,7 +678,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since 1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_cptu_menu_item() {
         global $submenu, $post, $parent_file, $pagenow;
@@ -736,7 +735,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function template_path() {
         if ( ! empty( $this->template_path ) ) {
@@ -766,7 +765,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function template_url() {
         if ( ! empty( $this->template_url ) ) {
@@ -796,7 +795,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function get_layouts() {
 
@@ -856,7 +855,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_description_field( $v ) {
         $this->layouts[ $this->_layout ]['support']['description'] = $v == 'yes' ? true : false;
@@ -869,7 +868,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_layout_fields( $fields = array() ) {
         // change the ID
@@ -889,7 +888,7 @@ class YIT_CPT_Unlimited {
 	 *
 	 * @return void
 	 * @since  1.0
-	 * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	public function add_item_fields( $fields = array() ) {
 		// change the ID
@@ -908,7 +907,7 @@ class YIT_CPT_Unlimited {
 	 *
 	 * @return void
 	 * @since  1.0
-	 * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
 	public function add_table_columns( $columns ) {
 		$this->layouts[ $this->_layout ]['columns'] = $columns;
@@ -929,7 +928,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function enqueue_style( $handle, $src = false, $deps = array(), $ver = false, $media = 'all' ) {
         $this->layouts[ $this->_layout ]['css'][] = compact( 'handle', 'src', 'deps', 'ver', 'media' );
@@ -949,7 +948,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function enqueue_script( $handle, $src = false, $deps = array(), $ver = false, $in_footer = false ) {
         $this->layouts[ $this->_layout ]['js'][] = compact( 'handle', 'src', 'deps', 'ver', 'in_footer' );
@@ -960,7 +959,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function frontend_assets() {
         global $post;
@@ -1019,7 +1018,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_metabox_cptu() {
 
@@ -1157,7 +1156,7 @@ class YIT_CPT_Unlimited {
             return;
         }
 
-        $metabox = YIT_Metabox( $this->_name . '_cptu_settings' );
+        $metabox = PGA_Metabox( $this->_name . '_cptu_settings' );
         $metabox->init( $metabox_args );
     }
 
@@ -1168,7 +1167,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_metabox_item_fields() {
         global $pagenow, $post_type;
@@ -1205,7 +1204,7 @@ class YIT_CPT_Unlimited {
             )
         );
 
-        $metabox = YIT_Metabox( $post_type . '_item_fields' );
+        $metabox = PGA_Metabox( $post_type . '_item_fields' );
         $metabox->init( $metabox_args );
 
     }
@@ -1215,7 +1214,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_quick_links_metaboxes() {
         // CPTU
@@ -1243,7 +1242,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function quick_links_cptu_inner( $post ) {
         extract( $this->_cpt_args( $post ) );
@@ -1259,7 +1258,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function quick_links_cpt_inner( $post ) {
         $post = get_post( $this->_get_id_by_name( $post->post_type ) );
@@ -1275,7 +1274,7 @@ class YIT_CPT_Unlimited {
      *
      * @return array
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function cptu_define_columns( $columns ) {
         unset( $columns['date'] );
@@ -1293,7 +1292,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function cptu_change_columns( $column, $post_id ) {
         $post = get_post( $post_id );
@@ -1315,7 +1314,7 @@ class YIT_CPT_Unlimited {
      *
      * @return bool|string
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function locate_file( $layout, $file = '' ) {
         if ( ! $this->_args['manage_layouts'] ) {
@@ -1337,7 +1336,7 @@ class YIT_CPT_Unlimited {
      *
      * @return bool|string
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function locate_url( $layout, $file = '' ) {
         if ( ! $this->_args['manage_layouts'] ) {
@@ -1359,7 +1358,7 @@ class YIT_CPT_Unlimited {
      *
      * @return mixed
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     protected function _get_id_by_name( $name ) {
         global $wpdb;
@@ -1373,7 +1372,7 @@ class YIT_CPT_Unlimited {
      *
      * @return mixed
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     protected function _get_post_type_by_name( $name ) {
         global $wpdb;
@@ -1388,7 +1387,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string|null
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_shortcode( $atts, $content = null ) {
         $atts = wp_parse_args( $atts, array(
@@ -1402,8 +1401,8 @@ class YIT_CPT_Unlimited {
         if ( empty( $atts['name'] ) || 'none' == $atts['name'] ) return null;
 
         // compatibility fix: remove prefix if exists in portfolio object
-        if( function_exists( 'YIT_Portfolio' ) && method_exists( YIT_Portfolio(), 'is' ) && YIT_Portfolio()->is( $atts['name'] ) ){
-            $atts['name'] = str_replace( YIT_Portfolio()->post_type_prefix, '', $atts['name'] );
+        if( function_exists( 'PGA_Portfolio' ) && method_exists( PGA_Portfolio(), 'is' ) && PGA_Portfolio()->is( $atts['name'] ) ){
+            $atts['name'] = str_replace( PGA_Portfolio()->post_type_prefix, '', $atts['name'] );
         }
 
         // pass vars to template
@@ -1445,7 +1444,7 @@ class YIT_CPT_Unlimited {
      *
      * @return string
      * @since 1.0.0
-     * @author Antonino Scarfi' <antonio.scarfi@yithemes.it>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function shortcode_icon( $icon_url ) {
         return ! empty( $this->_args['shortcode_icon'] ) ? $this->_args['shortcode_icon'] : $icon_url;
@@ -1460,7 +1459,7 @@ class YIT_CPT_Unlimited {
      *
      * @return array
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_shortcode_to_box( $shortcodes ) {
         $post_types = array();
@@ -1498,7 +1497,7 @@ class YIT_CPT_Unlimited {
      *
      * @return bool
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     protected function _is_valid( $post_type ) {
         return (bool)( strpos( $post_type, $this->_args['post_type_prefix'] ) !== false );
@@ -1511,7 +1510,7 @@ class YIT_CPT_Unlimited {
      *
      * @return array
      * @since  1.0
-     * @author Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
     */
     public function add_importer_required_post_type( $post ){
         global $wp_post_types, $wp_taxonomies;
@@ -1547,7 +1546,7 @@ class YIT_CPT_Unlimited {
      *
      * @return array
      * @since 1.0
-     * @author Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
     */
     public function add_importer_required_taxonomy( $terms ){
         global $wp_taxonomies;
@@ -1574,7 +1573,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonio La Rocca <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
     */
     public function recount_terms_post( $tt_ids, $ids, $tax ){
         wp_update_term_count( $tt_ids, $tax );
@@ -1587,11 +1586,11 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function admin_assets() {
         wp_enqueue_media();
-        wp_enqueue_script( 'yit-cptu', YIT_CORE_PLUGIN_URL . '/assets/js/yit-cpt-unlimited.js', array('jquery'), '', true );
+        wp_enqueue_script( 'yit-cptu', PGA_CORE_PLUGIN_URL . '/assets/js/yit-cpt-unlimited.js', array('jquery'), '', true );
     }
 
     /**
@@ -1599,7 +1598,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function add_button_multiuploader() {
         global $pagenow, $post_type, $wpdb;
@@ -1649,7 +1648,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function post_multiuploader() {
         if ( ! isset( $_REQUEST['images'] ) || ! isset( $_REQUEST['post_type'] ) && $this->_is_valid( $_REQUEST['post_type'] ) ) {
@@ -1680,7 +1679,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function single_template() {
         global $post, $wpdb;
@@ -1711,7 +1710,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function single_template_config() {
         global $post, $wpdb;
@@ -1744,7 +1743,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function archive_template() {
         global $wp_query;
@@ -1766,7 +1765,7 @@ class YIT_CPT_Unlimited {
      *
      * @return void
      * @since  1.0
-     * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
     public function archive_template_loop() {
         echo $this->add_shortcode( array( 'name' => $GLOBALS['wp_query']->post->post_type ) );

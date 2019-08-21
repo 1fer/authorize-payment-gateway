@@ -8,14 +8,14 @@
  * http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-if ( ! class_exists( 'YIT_Plugin_Common' ) ) :
+if ( ! class_exists( 'PGA_Plugin_Common' ) ) :
 
 /**
  * Core configuration class
  *
  * @since 1.0.0
  */
-class YIT_Plugin_Common {
+class PGA_Plugin_Common {
 
     /**
      * Config array

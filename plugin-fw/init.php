@@ -6,8 +6,8 @@
  * Text Domain: yith-plugin-fw
  * Domain Path: /languages/
  *
- * @author  Your Inspiration Themes
- * @version 3.3.8
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+ * @version 1.0.0
  */
 /**
  * This file belongs to the YIT Plugin Framework.
@@ -55,10 +55,10 @@ if ( ! function_exists ( 'yit_maybe_plugin_fw_loader' ) ) {
             $plugin_fw_data = array ( $framework_data[ 'Version' ] => $plugin_fw_main_file );
         }
 
-	    if ( ! defined( 'YITH_PLUGIN_FW_VERSION' ) ) {
+	    if ( ! defined( 'PG_PLUGIN_FW_VERSION' ) ) {
 		    $keys    = array_keys( $plugin_fw_data );
 		    $version = empty( $plugin_fw_data ) ? '1.0.0' : array_pop( $keys );
-		    define( 'YITH_PLUGIN_FW_VERSION', $version );
+		    define( 'PG_PLUGIN_FW_VERSION', $version );
 	    }
 
         //Check for license & upgrade classes

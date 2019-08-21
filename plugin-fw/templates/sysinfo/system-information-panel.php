@@ -55,9 +55,9 @@ $recommended_memory = '128M';
 										<?php if ( $to_be_enabled ) {
 											echo sprintf( __( '%s needs %s enabled', 'yith-plugin-fw' ), '<b>' . $plugin . '</b>', '<b>' . $labels[ $key ] . '</b>' );
 										} elseif ( $key == 'wp_memory_limit' ) {
-											echo sprintf( __( '%s needs at least %s of available memory', 'yith-plugin-fw' ), '<b>' . $plugin . '</b>', '<span class="error">' . esc_html( size_format( YITH_System_Status()->memory_size_to_num( $requirement ) ) ) . '</span>' );
+											echo sprintf( __( '%s needs at least %s of available memory', 'yith-plugin-fw' ), '<b>' . $plugin . '</b>', '<span class="error">' . esc_html( size_format( PG_System_Status()->memory_size_to_num( $requirement ) ) ) . '</span>' );
 											echo '<br/>';
-											echo sprintf( __( 'For optimal functioning of our plugins, we suggest setting at least %s of available memory', 'yith-plugin-fw' ), '<span class="error">' . esc_html( size_format( YITH_System_Status()->memory_size_to_num( $recommended_memory ) ) ) . '</span>' );
+											echo sprintf( __( 'For optimal functioning of our plugins, we suggest setting at least %s of available memory', 'yith-plugin-fw' ), '<span class="error">' . esc_html( size_format( PG_System_Status()->memory_size_to_num( $recommended_memory ) ) ) . '</span>' );
 
 										} else {
 											echo sprintf( __( '%s needs at least %s version', 'yith-plugin-fw' ), '<b>' . $plugin . '</b>', '<span class="error">' . $requirement . '</span>' );
@@ -99,7 +99,7 @@ $recommended_memory = '128M';
 						<?php if ( $has_warnings ) : ?>
                             <ul>
                                 <li>
-									<?php echo sprintf( __( 'For optimal functioning of our plugins, we suggest setting at least %s of available memory', 'yith-plugin-fw' ), '<span class="warning">' . esc_html( size_format( YITH_System_Status()->memory_size_to_num( $recommended_memory ) ) ) . '</span>' ); ?>
+									<?php echo sprintf( __( 'For optimal functioning of our plugins, we suggest setting at least %s of available memory', 'yith-plugin-fw' ), '<span class="warning">' . esc_html( size_format( PG_System_Status()->memory_size_to_num( $recommended_memory ) ) ) . '</span>' ); ?>
                                 </li>
                             </ul>
 							<?php echo sprintf( __( 'Read more %s here%s or contact your hosting company in order to increase it.', 'yith-plugin-fw' ), '<a href="https://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP" target="_blank">', '</a>' ); ?>

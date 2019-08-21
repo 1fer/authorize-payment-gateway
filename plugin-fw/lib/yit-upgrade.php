@@ -11,28 +11,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if ( ! class_exists( 'YIT_Upgrade' ) ) {
+if ( ! class_exists( 'PGA_Upgrade' ) ) {
 	/**
 	 * YIT Upgrade
 	 *
 	 * Notify and Update plugin
 	 *
-	 * @class       YIT_Upgrade
-	 * @package     YITH
+	 * @class       PGA_Upgrade
 	 * @since       1.0
-	 * @author      Your Inspiration Themes
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 * @see         WP_Updater Class
 	 */
-	class YIT_Upgrade {
+	class PGA_Upgrade {
 		/**
-		 * @var YIT_Upgrade The main instance
+		 * @var PGA_Upgrade The main instance
 		 */
 		protected static $_instance;
 
 		/**
 		 * Construct
 		 *
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 * @since  1.0
 		 */
 		public function __construct() {
@@ -48,16 +47,16 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 		 * @return void
 		 *
 		 * @since  1.0
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function register( $plugin_slug, $plugin_init ) {
-			if( ! function_exists( 'YITH_Plugin_Upgrade' ) ){
-				//Try to load YITH_Plugin_Upgrade class
+			if( ! function_exists( 'PG_Plugin_Upgrade' ) ){
+				//Try to load PG_Plugin_Upgrade class
 				yith_plugin_fw_load_update_and_licence_files();
 			}
 
             try {
-                YITH_Plugin_Upgrade()->register( $plugin_slug, $plugin_init );
+                PG_Plugin_Upgrade()->register( $plugin_slug, $plugin_init );
             } catch( Error $e ){
             }
 		}
@@ -69,7 +68,7 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 		 * @return object Main instance
 		 *
 		 * @since  1.0
-		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -81,20 +80,20 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 	}
 }
 
-if ( ! function_exists( 'YIT_Upgrade' ) ) {
+if ( ! function_exists( 'PGA_Upgrade' ) ) {
 	/**
 	 * Main instance of plugin
 	 *
-	 * @return YIT_Upgrade
+	 * @return PGA_Upgrade
 	 * @since  1.0
-	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
-	function YIT_Upgrade() {
-		return YIT_Upgrade::instance();
+	function PGA_Upgrade() {
+		return PGA_Upgrade::instance();
 	}
 }
 
 /**
- * Instance a YIT_Upgrade object
+ * Instance a PGA_Upgrade object
  */
-YIT_Upgrade();
+PGA_Upgrade();

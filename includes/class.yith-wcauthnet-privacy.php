@@ -2,28 +2,27 @@
 /**
  * Privacy class; added to let customer export personal data
  *
- * @author Your Inspiration Themes
- * @package YITH WooCommerce Authorize.net Payment Gateway
- * @version 1.1.4
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+ * @version 1.0.0
  */
 
-if ( ! defined( 'YITH_WCAUTHNET' ) ) {
+if ( ! defined( 'PG_WCAUTHNET' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if( ! class_exists( 'YITH_WCAUTHNET_Privacy' ) ) {
+if( ! class_exists( 'PG_WCAUTHNET_Privacy' ) ) {
 	/**
 	 * YITH Authorize.net Privacy class
 	 *
-	 * @since 1.1.4
+	 * @since 1.0.0
 	 */
-	class YITH_WCAUTHNET_Privacy extends YITH_Privacy_Plugin_Abstract {
+	class PG_WCAUTHNET_Privacy extends PG_Privacy_Plugin_Abstract {
 
 		/**
 		 * Constructor method
 		 *
-		 * @return \YITH_WCAUTHNET_Privacy
-		 * @since 1.1.4
+		 * @return \PG_WCAUTHNET_Privacy
+		 * @since 1.0.0
 		 */
 		public function __construct() {
 			parent::__construct( 'YITH WooCommerce Authorize.net Payment Gateway' );
@@ -36,7 +35,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Privacy' ) ) {
 		 * Retrieves privacy example text for authorize plugin
 		 *
 		 * @return string Privacy message
-		 * @since 1.1.4
+		 * @since 1.0.0
 		 */
 		public function get_privacy_message( $section ) {
 			$content = '';
@@ -73,7 +72,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Privacy' ) ) {
 		 *
 		 * @param $erasers array Array of currently registered erasers
 		 * @return array Array of filtered erasers
-		 * @since 1.1.4
+		 * @since 1.0.0
 		 */
 		public function register_eraser( $erasers ) {
 			$erasers['yith_authorize_eraser'] = array(
@@ -90,7 +89,7 @@ if( ! class_exists( 'YITH_WCAUTHNET_Privacy' ) ) {
 		 * @param $email_address string Email of the users that requested export
 		 * @param $page int Current page processed
 		 * @return array Result of the operation
-		 * @since 1.1.4
+		 * @since 1.0.0
 		 */
 		public function authorize_data_eraser( $email_address, $page ) {
 			$user            = get_user_by( 'email', $email_address ); // Check if user has an ID in the DB to load stored personal data.

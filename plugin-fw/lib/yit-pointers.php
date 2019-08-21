@@ -15,27 +15,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  *
  * @class yit-pointers
- * @package    YITH
- * @since      Version 2.0.0
- * @author     Your Inspiration Themes
+ * @since 1.0.0
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  *
  */
-if ( ! class_exists( 'YIT_Pointers' ) ) {
+if ( ! class_exists( 'PGA_Pointers' ) ) {
     /**
      * YIT Pointers
      *
      * Initializes the new feature pointers.
      *
-     * @class       YIT_Pointers
-     * @package     YITH
+     * @class       PGA_Pointers
      * @since       1.0
-     * @author      Your Inspiration Themes
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      * @see         WP_Internal_Pointers
      */
-    class YIT_Pointers {
+    class PGA_Pointers {
 
         /**
-         * @var YIT_Upgrade The main instance
+         * @var PGA_Upgrade The main instance
          */
         protected static $_instance;
 
@@ -57,7 +55,7 @@ if ( ! class_exists( 'YIT_Pointers' ) ) {
         /**
          * Construct
          *
-         * @author Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          * @since  1.0
          */
         public function __construct() {
@@ -133,7 +131,7 @@ if ( ! class_exists( 'YIT_Pointers' ) ) {
          * @return object Main instance
          *
          * @since  1.0
-         * @author Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function instance() {
             if ( is_null( self::$_instance ) ) {
@@ -354,7 +352,7 @@ if ( ! class_exists( 'YIT_Pointers' ) ) {
             wp_enqueue_style( 'wp-pointer' );
             wp_enqueue_script( 'wp-pointer' );
 
-            wp_enqueue_script( 'yit-wp-pointer', YIT_CORE_PLUGIN_URL . '/assets/js/' . $script_file, array( 'wp-pointer' ), false, true );
+            wp_enqueue_script( 'yit-wp-pointer', PGA_CORE_PLUGIN_URL . '/assets/js/' . $script_file, array( 'wp-pointer' ), false, true );
             wp_localize_script( 'yit-wp-pointer', 'custom_pointer', $valid_pointers );
         }
 
@@ -371,20 +369,20 @@ if ( ! class_exists( 'YIT_Pointers' ) ) {
     }
 }
 
-if ( ! function_exists( 'YIT_Pointers' ) ) {
+if ( ! function_exists( 'PGA_Pointers' ) ) {
     /**
      * Main instance of plugin
      *
-     * @return object YIT_Pointers
+     * @return object PGA_Pointers
      * @since  1.0
-     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    function YIT_Pointers() {
-        return YIT_Pointers::instance();
+    function PGA_Pointers() {
+        return PGA_Pointers::instance();
     }
 }
 
 /**
- * Instance a YIT_Pointers object
+ * Instance a PGA_Pointers object
  */
-YIT_Pointers();
+PGA_Pointers();

@@ -2,9 +2,8 @@
 /**
  * YITH
  * 
- * @package WordPress
  * @subpackage YITH
- * @author YITH <plugins@yithemes.com>
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  *
  * This source file is subject to the GNU GENERAL PUBLIC LICENSE (GPL 3.0)
  * that is bundled with this package in the file LICENSE.txt.
@@ -12,13 +11,13 @@
  * http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-if( ! class_exists( 'YITH_Dashboard' ) ){
+if( ! class_exists( 'PG_Dashboard' ) ){
 	/**
 	 * Wordpress Admin Dashboard Management
 	 *
 	 * @since 1.0.0
 	 */
-	class YITH_Dashboard {
+	class PG_Dashboard {
 		/**
 		 * Products URL
 		 *
@@ -37,8 +36,8 @@ if( ! class_exists( 'YITH_Dashboard' ) ){
 		 * @access public
 		 */
 		public static function dashboard_widget_setup() {
-			wp_add_dashboard_widget( 'yith_dashboard_products_news', __( 'YITH Latest Updates' , 'yith-plugin-fw' ), 'YITH_Dashboard::dashboard_products_news' );
-			wp_add_dashboard_widget( 'yith_dashboard_blog_news', __( 'Latest news from YITH Blog' , 'yith-plugin-fw' ), 'YITH_Dashboard::dashboard_blog_news' );
+			wp_add_dashboard_widget( 'yith_dashboard_products_news', __( 'YITH Latest Updates' , 'yith-plugin-fw' ), 'PG_Dashboard::dashboard_products_news' );
+			wp_add_dashboard_widget( 'yith_dashboard_blog_news', __( 'Latest news from YITH Blog' , 'yith-plugin-fw' ), 'PG_Dashboard::dashboard_blog_news' );
 		}
 
 
@@ -134,7 +133,7 @@ if( ! class_exists( 'YITH_Dashboard' ) ){
 		 */
 		public static function enqueue_scripts(){
 			if( function_exists( 'get_current_screen' ) && 'dashboard' == get_current_screen()->id ){
-				$script_path = defined( 'YIT_CORE_PLUGIN_URL' ) ? YIT_CORE_PLUGIN_URL : get_template_directory_uri() . '/core/plugin-fw';
+				$script_path = defined( 'PGA_CORE_PLUGIN_URL' ) ? PGA_CORE_PLUGIN_URL : get_template_directory_uri() . '/core/plugin-fw';
 				$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 				wp_enqueue_script( 'yith-dashboard', $script_path . '/assets/js/yith-dashboard' . $suffix . '.js', array( 'jquery-ui-dialog' ), '1.0.0', true );
 				wp_enqueue_style( 'wp-jquery-ui-dialog' );
@@ -149,8 +148,8 @@ if( ! class_exists( 'YITH_Dashboard' ) ){
 	}
 
 	if( apply_filters( 'yith_plugin_fw_show_dashboard_widgets', true ) ){
-		add_action( 'wp_dashboard_setup', 'YITH_Dashboard::dashboard_widget_setup' );
-		add_action( 'admin_enqueue_scripts', 'YITH_Dashboard::enqueue_scripts', 20 );
+		add_action( 'wp_dashboard_setup', 'PG_Dashboard::dashboard_widget_setup' );
+		add_action( 'admin_enqueue_scripts', 'PG_Dashboard::enqueue_scripts', 20 );
 	}
 }
 

@@ -11,18 +11,16 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
+if ( !class_exists( 'PGA_Plugin_Panel_WooCommerce' ) ) {
     /**
      * YIT Plugin Panel for WooCommerce
      * Setting Page to Manage Plugins
      *
-     * @class      YIT_Plugin_Panel
-     * @package    YITH
+     * @class      PGA_Plugin_Panel
      * @since      1.0
-     * @author     Andrea Grillo      <andrea.grillo@yithemes.com>
-     * @author     Antonio La Rocca   <antonio.larocca@yithemes.com>
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    class YIT_Plugin_Panel_WooCommerce extends YIT_Plugin_Panel {
+    class PGA_Plugin_Panel_WooCommerce extends PGA_Plugin_Panel {
 
         /**
          * @var string version of class
@@ -59,8 +57,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * Constructor
          *
          * @since    1.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function __construct( $args = array() ) {
 
@@ -131,8 +128,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @return   void
          * @since    1.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function yit_panel() {
             $additional_info = array(
@@ -148,7 +144,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
             $additional_info[ 'additional_info' ] = $additional_info;
 
             extract( $additional_info );
-            require_once( YIT_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-panel.php' );
+            require_once( PGA_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-panel.php' );
         }
 
         /**
@@ -156,7 +152,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @return   string
          * @since    1.0
-         * @author   Emanuela Castorina      <emanuela.castorina@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
 
         public function yit_upload_update( $option_value ) {
@@ -168,7 +164,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @param array $args
          * @since    1.0
-         * @author   Emanuela Castorina      <emanuela.castorina@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
 
         public function yit_upload( $args = array() ) {
@@ -176,7 +172,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
                 $args[ 'value' ] = ( get_option( $args[ 'id' ] ) ) ? get_option( $args[ 'id' ] ) : $args[ 'default' ];
                 extract( $args );
 
-                include( YIT_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-upload.php' );
+                include( PGA_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-upload.php' );
             }
         }
 
@@ -186,7 +182,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @param $screen_ids
          * @return mixed
          * @since    1.0.0
-         * @author   Antonino Scarfì      <antonino.scarfi@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_allowed_screen_id( $screen_ids ) {
             global $admin_page_hooks;
@@ -204,9 +200,8 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * Returns current active tab slug
          *
          * @return string
-         * @since    2.0.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_current_tab() {
             global $pagenow;
@@ -226,8 +221,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @param bool false for all tabs slug, true for current tab
          * @return mixed Array tabs | String current tab
          * @since    1.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_available_tabs( $default = false ) {
             $tabs = array_keys( $this->settings[ 'admin-tabs' ] );
@@ -242,8 +236,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_fields() {
 
@@ -264,9 +257,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
-         * @author   Leanza Francesco   <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function print_panel_content() {
             $yit_options       = $this->get_main_array_options();
@@ -278,7 +269,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
 
                 return;
             } else {
-                require_once( YIT_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-form.php' );
+                require_once( PGA_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-form.php' );
             }
         }
 
@@ -287,8 +278,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          * @see      woocommerce_update_options function
          * @internal fire two action (before and after update): yit_panel_wc_before_update and yit_panel_wc_after_update
          */
@@ -353,9 +343,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo      <andrea.grillo@yithemes.com>
-         * @author   Antonio La Rocca   <antonio.larocca@yithemes.com>
-         * @author   Leanza Francesco   <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function admin_enqueue_scripts() {
             global $woocommerce, $pagenow;
@@ -445,7 +433,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
         /**
          * Delete the "default options added" option
          *
-         * @author   Leanza Francesco   <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function delete_default_options_set_option() {
             delete_option( 'yit_plugin_fw_panel_wc_default_options_set' );
@@ -454,8 +442,8 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
         /**
          * Add the woocommerce body class in plugin panel page
          *
-         * @author Andrea Grillo <andrea.grillo@yithemes.com>
-         * @since  2.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+	     * @since  1.0
          * @param $classes The body classes
          * @return array Filtered body classes
          */
@@ -475,8 +463,8 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @param $option    mixed  Option settings array
          * @param $raw_value string Raw option value
          * @return mixed Filtered return value
-         * @author Antonio La Rocca <antonio.larocca@yithemes.com>
-         * @since  2.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+	     * @since  1.0
          */
         public function maybe_unserialize_panel_data( $value, $option, $raw_value ) {
 
@@ -506,8 +494,8 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @param $option    mixed  Option settings array
          * @param $raw_value string Raw option value
          * @return mixed Filtered return value
-         * @author Leanza Francesco <leanzafrancesco@gmail.com>
-         * @since  3.0.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
+	     * @since  1.0
          */
         public static function sanitize_option( $value, $option, $raw_value ) {
 
@@ -574,8 +562,8 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *
          * @param array $field
          * @return   void
-         * @since    3.0.0
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function add_yith_field( $field = array() ) {
             if ( !empty( $field ) && isset( $field[ 'yith-type' ] ) ) {
@@ -596,7 +584,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
                 }
                 $field[ 'value' ] = $value;
 
-                require( YIT_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-option-row.php' );
+                require( PGA_CORE_PLUGIN_TEMPLATE_PATH . '/panel/woocommerce/woocommerce-option-row.php' );
             }
         }
 
@@ -605,7 +593,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          *  Called by the action 'admin_action_yith_plugin_fw_save_toggle_element'
          *  via Ajax
          *
-         * @author Emanuela Castorina
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function save_toggle_element_options() {
             $posted      = $_POST;

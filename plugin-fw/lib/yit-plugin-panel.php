@@ -12,18 +12,17 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
+if ( !class_exists( 'PGA_Plugin_Panel' ) ) {
     /**
      * YIT Plugin Panel
      *
      * Setting Page to Manage Plugins
      *
-     * @class      YIT_Plugin_Panel
-     * @package    YITH
+     * @class      PGA_Plugin_Panel
      * @since      1.0
-     * @author     Your Inspiration Themes
+     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
      */
-    class YIT_Plugin_Panel {
+    class PGA_Plugin_Panel {
 
         /**
          * @var string version of class
@@ -59,7 +58,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          * Constructor
          *
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          *
          * @param array $args
          */
@@ -112,8 +111,8 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
         /**
          * Init actions once to prevent multiple actions
          *
-         * @since  3.0.0
-         * @author Leanza Francesco <leanzafrancesco@gmail.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         protected static function _init_actions() {
             if ( !static::$_actions_initialized ) {
@@ -133,8 +132,8 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @param $admin_body_classes
          *
-         * @since  3.0.0
-         * @author Leanza Francesco <leanzafrancesco@gmail.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          *
          * @return string
          */
@@ -151,7 +150,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_menu_page() {
             global $admin_page_hooks;
@@ -176,7 +175,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function remove_duplicate_submenu_page() {
             /* === Duplicate Items Hack === */
@@ -190,8 +189,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function admin_enqueue_scripts() {
             global $pagenow;
@@ -231,7 +229,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function register_settings() {
             register_setting( 'yit_' . $this->settings[ 'parent' ] . '_options', 'yit_' . $this->settings[ 'parent' ] . '_options', array( $this, 'options_validate' ) );
@@ -246,7 +244,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return array validate input fields
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function options_validate( $input ) {
 
@@ -306,7 +304,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return array validate input fields
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_setting_page() {
             $this->settings[ 'icon_url' ] = isset( $this->settings[ 'icon_url' ] ) ? $this->settings[ 'icon_url' ] : '';
@@ -329,12 +327,12 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          * Add Premium Version upgrade menu item
          *
          * @return   void
-         * @since    2.9.13
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_premium_version_upgrade_to_menu() {
             /* === Add the How To menu item only if the customer haven't a premium version enabled === */
-            if ( function_exists( 'YIT_Plugin_Licence' ) && !!YIT_Plugin_Licence()->get_products() ) {
+            if ( function_exists( 'PGA_Plugin_Licence' ) && !!PGA_Plugin_Licence()->get_products() ) {
                 return;
             }
 
@@ -356,7 +354,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function yit_panel() {
 
@@ -437,8 +435,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function print_custom_tab( $action ) {
             do_action( $action );
@@ -451,7 +448,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_fields() {
             $yit_options = $this->get_main_array_options();
@@ -478,7 +475,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void|array return void when capability is false
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function add_admin_bar_menu() {
 
@@ -509,7 +506,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_current_tab() {
             $admin_tabs = array_keys( $this->settings[ 'admin-tabs' ] );
@@ -537,7 +534,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function message() {
 
@@ -574,7 +571,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void|string
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_message( $message, $type = 'error', $echo = true ) {
             $message = '<div id="message" class="' . $type . ' fade"><p>' . $message . '</p></div>';
@@ -593,7 +590,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return array
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_tabs_path_files() {
 
@@ -623,7 +620,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return array
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_main_array_options() {
             if ( !empty( $this->_main_array_options ) ) {
@@ -651,7 +648,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return array
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_default_options() {
             $yit_options     = $this->get_main_array_options();
@@ -680,7 +677,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return string
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_tab_title() {
             $yit_options = $this->get_main_array_options();
@@ -704,7 +701,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return string
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_section_title( $section ) {
             $yit_options = $this->get_main_array_options();
@@ -726,7 +723,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return string
          * @since    1.0
-         * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_section_description( $section ) {
             $yit_options = $this->get_main_array_options();
@@ -747,7 +744,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return bool
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function is_show_form() {
             $yit_options = $this->get_main_array_options();
@@ -776,7 +773,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_name_field( $name = '' ) {
             return 'yit_' . $this->settings[ 'parent' ] . '_options[' . $name . ']';
@@ -791,7 +788,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return string
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function get_id_field( $id ) {
             return 'yit_' . $this->settings[ 'parent' ] . '_options_' . $id;
@@ -808,7 +805,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return void
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         function render_field( $param ) {
 
@@ -835,7 +832,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
                     $option[ 'type' ] = 'onoff';
 
                 if ( $field_template_path = yith_plugin_fw_get_field_template_path( $option ) ) {
-                    $field_container_path = apply_filters( 'yith_plugin_fw_panel_field_container_template_path', YIT_CORE_PLUGIN_TEMPLATE_PATH . '/panel/panel-field-container.php', $option );
+                    $field_container_path = apply_filters( 'yith_plugin_fw_panel_field_container_template_path', PGA_CORE_PLUGIN_TEMPLATE_PATH . '/panel/panel-field-container.php', $option );
                     file_exists( $field_container_path ) && include( $field_container_path );
                 } else {
                     do_action( "yit_panel_{$option['type']}", $option, $db_value, $custom_attributes );
@@ -851,7 +848,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return array
          * @since  1.0
-         * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public function get_options() {
             $options = get_option( 'yit_' . $this->settings[ 'parent' ] . '_options' );
@@ -870,12 +867,12 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          *
          * @return   void
          * @since    1.0
-         * @author   Emanuela Castorina      <emanuela.castorina@yithemes.com>
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function add_infobox( $args = array() ) {
             if ( !empty( $args ) ) {
                 extract( $args );
-                require_once( YIT_CORE_PLUGIN_TEMPLATE_PATH . '/panel/boxinfo.php' );
+                require_once( PGA_CORE_PLUGIN_TEMPLATE_PATH . '/panel/boxinfo.php' );
             }
         }
 
@@ -905,8 +902,8 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
         /**
          * sort plugins by name in YITH Plugins menu
          *
-         * @since    3.0.0
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function sort_plugins() {
             global $submenu;
@@ -924,8 +921,8 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
         /**
          * add menu class in YITH Plugins menu
          *
-         * @since    3.0.0
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
+	     * @since  1.0
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
         public static function add_menu_class_in_yith_plugin( $menu ) {
             global $submenu;
@@ -955,7 +952,7 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
          * Check if inside the admin tab there's the premium tab to
          * check if the plugin is a free or not
          *
-         * @author Emanuela Castorina
+         * @author Panevnyk Roman <panevnyk.roman@gmail.com>
          */
 	    function is_free() {
 		    return  ( ! empty( $this->settings['admin-tabs'] ) && isset($this->settings['admin-tabs']['premium']));
@@ -973,11 +970,11 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
 		    if( $this->is_free() && isset( $this->settings['plugin_slug'] ) ):
 			    $banners = apply_filters( 'yith_plugin_fw_banners_free', array(
 				    'upgrade' => array(
-					    'image'  => YIT_CORE_PLUGIN_URL. '/assets/images/upgrade_banner.png',
+					    'image'  => PGA_CORE_PLUGIN_URL. '/assets/images/upgrade_banner.png',
 					    'link' => 'https://yithemes.com/themes/plugins/'.$this->settings['plugin_slug'],
 				    ),
 				    'rate'    => array(
-					    'image'  => YIT_CORE_PLUGIN_URL. '/assets/images/rate_banner.png',
+					    'image'  => PGA_CORE_PLUGIN_URL. '/assets/images/rate_banner.png',
 					    'link' => 'https://wordpress.org/plugins/'.$this->settings['plugin_slug'].'/reviews/#new-post',
 				    ),
 			    ), $page );
@@ -1013,8 +1010,8 @@ if ( !class_exists( 'YIT_Plugin_Panel' ) ) {
 	    /**
 	     * Add additional element after print the field.
 	     *
-	     *@since 3.2
-	     *@author Emanuela Castorina
+	     * @since  1.0
+	     * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	     */
 	    public function add_yith_ui( $field ) {
 

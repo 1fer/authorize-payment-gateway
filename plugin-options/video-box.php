@@ -15,7 +15,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'YITH_WCAUTHNET' ) ) {
+if ( ! defined( 'PG_WCAUTHNET' ) ) {
 	exit;
 } // Exit if accessed directly
 
@@ -29,13 +29,13 @@ return array(
 
 		'video' => array(
 			'video_id'           => '121450270',
-			'video_image_url'    =>  YITH_WCAUTHNET_URL.'assets/images/yith-woocommerce-authorize-net.jpg',
+			'video_image_url'    =>  PG_WCAUTHNET_URL.'assets/images/yith-woocommerce-authorize-net.jpg',
 			'video_description'  => __( 'YITH WooCommerce Authorize.net', 'yith-wcauthnet' ),
 		),
 		'title_second_column' => __( 'Get Support and Pro Features', 'yith-wcauthnet' ),
 		'description_second_column' => __('By purchasing the premium version of the plugin, you will take advantage of the advanced features of the product and you will get one year of free updates and support through our platform available 24h/24.', 'yith-wcauthnet'),
 		'button' => array(
-			'href' => YITH_WCAUTHNET_Admin()->get_premium_landing_uri(),
+			'href' => PG_WCAUTHNET_Admin()->get_premium_landing_uri(),
 			'title' => __( 'Get Support and Pro Features', 'yith-wcauthnet' )
 		)
 	),

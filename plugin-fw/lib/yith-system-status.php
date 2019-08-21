@@ -12,18 +12,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if ( ! class_exists( 'YITH_System_Status' ) ) {
+if ( ! class_exists( 'PG_System_Status' ) ) {
 	/**
 	 * YITH System Status Panel
 	 *
 	 * Setting Page to Manage Plugins
 	 *
-	 * @class      YITH_System_Status
-	 * @package    YITH
+	 * @class      PG_System_Status
 	 * @since      1.0
-	 * @author     Alberto Ruggiero
+	 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 	 */
-	class YITH_System_Status {
+	class PG_System_Status {
 
 		/**
 		 * @var array The settings require to add the submenu page "System Status"
@@ -48,7 +47,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		/**
 		 * Single instance of the class
 		 *
-		 * @var \YITH_System_Status
+		 * @var \PG_System_Status
 		 * @since 1.0.0
 		 */
 		protected static $_instance = null;
@@ -57,8 +56,8 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 * Main plugin Instance
 		 *
 		 * @since  1.0.0
-		 * @return YITH_System_Status
-		 * @author Alberto Ruggiero
+		 * @return PG_System_Status
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -73,7 +72,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @return void
-		 * @author Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function __construct() {
 
@@ -121,7 +120,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @return void
-		 * @author Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function add_submenu_page() {
 			add_submenu_page(
@@ -139,11 +138,11 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @return void
-		 * @author Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function show_information_panel() {
 
-			$path   = defined( 'YIT_CORE_PLUGIN_PATH' ) ? YIT_CORE_PLUGIN_PATH : get_template_directory() . '/core/plugin-fw/';
+			$path   = defined( 'PGA_CORE_PLUGIN_PATH' ) ? PGA_CORE_PLUGIN_PATH : get_template_directory() . '/core/plugin-fw/';
 			$labels = $this->_requirement_labels;
 
 			require_once( $path . '/templates/sysinfo/system-information-panel.php' );
@@ -155,7 +154,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @return void
-		 * @author Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function check_system_status() {
 
@@ -228,7 +227,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 * @param $requirements array
 		 *
 		 * @return void
-		 * @author Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function add_requirements( $plugin_name, $requirements ) {
 
@@ -248,10 +247,10 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since   1.0.0
 		 * @return  void
-		 * @author  Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function dismissable_notice() {
-			$script_path = defined( 'YIT_CORE_PLUGIN_URL' ) ? YIT_CORE_PLUGIN_URL : get_template_directory_uri() . '/core/plugin-fw';
+			$script_path = defined( 'PGA_CORE_PLUGIN_URL' ) ? PGA_CORE_PLUGIN_URL : get_template_directory_uri() . '/core/plugin-fw';
 			$suffix      = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 			wp_register_script( 'yith-system-info', $script_path . '/assets/js/yith-system-info' . $suffix . '.js', array( 'jquery' ), '1.0.0', true );
 		}
@@ -261,7 +260,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since   1.0.0
 		 * @return  void
-		 * @author  Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function activate_system_notice() {
 
@@ -293,7 +292,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 *
 		 * @since   1.0.0
 		 * @return  array
-		 * @author  Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function get_system_info() {
 
@@ -351,7 +350,7 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 		 * @param   $memory_size string
 		 *
 		 * @return  integer
-		 * @author  Alberto Ruggiero
+		 * @author Panevnyk Roman <panevnyk.roman@gmail.com>
 		 */
 		public function memory_size_to_num( $memory_size ) {
 			$unit       = strtoupper( substr( $memory_size, - 1 ) );
@@ -376,14 +375,14 @@ if ( ! class_exists( 'YITH_System_Status' ) ) {
 /**
  * Main instance of plugin
  *
- * @return YITH_System_Status object
+ * @return PG_System_Status object
  * @since  1.0
- * @author Alberto Ruggiero
+ * @author Panevnyk Roman <panevnyk.roman@gmail.com>
  */
-if ( ! function_exists( 'YITH_System_Status' ) ) {
-	function YITH_System_Status() {
-		return YITH_System_Status::instance();
+if ( ! function_exists( 'PG_System_Status' ) ) {
+	function PG_System_Status() {
+		return PG_System_Status::instance();
 	}
 }
 
-YITH_System_Status();
+PG_System_Status();
