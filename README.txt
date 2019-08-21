@@ -6,4 +6,4 @@
 
 1. Unzip the downloaded zip file.
 2. Upload the plugin folder into the `wp-content/plugins/` directory of your WordPress site.
-3. Activate `YITH WooCommerce Authorize.net Payment Gateway` from Plugins page
+3. Activate `WooCommerce Authorize.net Payment Gateway` from Plugins page
