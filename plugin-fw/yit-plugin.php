@@ -186,11 +186,6 @@ if( ! function_exists( 'yith_add_action_links' ) ){
 		if( ! empty( $panel_page )  ){
 			$links[] = sprintf( '<a href="%s">%s</a>', admin_url( "admin.php?page={$panel_page}" ), _x( 'Settings', 'Action links',  'yith-plugin-fw' ) );
 		}
-
-		if( $is_premium && class_exists( 'PGA_Plugin_Licence' ) ){
-			$links[] = sprintf( '<a href="%s">%s</a>', PGA_Plugin_Licence()->get_license_activation_url(),__( 'License',  'yith-plugin-fw' ) );
-		}
-
 		return $links;
 	}
 }
