@@ -79,7 +79,6 @@ if ( !class_exists( 'PGA_Plugin_Panel_WooCommerce' ) ) {
 
                 add_action( 'admin_init', array( $this, 'set_default_options' ) );
                 add_action( 'admin_menu', array( $this, 'add_setting_page' ) );
-                add_action( 'admin_menu', array( $this, 'add_premium_version_upgrade_to_menu' ), 100 );
                 add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), 100 );
                 add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
                 add_action( 'admin_init', array( $this, 'woocommerce_update_options' ) );

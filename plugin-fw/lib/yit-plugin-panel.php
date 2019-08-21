@@ -92,7 +92,6 @@ if ( !class_exists( 'PGA_Plugin_Panel' ) ) {
 
                 add_action( 'admin_init', array( $this, 'register_settings' ) );
                 add_action( 'admin_menu', array( $this, 'add_setting_page' ), 20 );
-                add_action( 'admin_menu', array( $this, 'add_premium_version_upgrade_to_menu' ), 100 );
                 add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), 100 );
                 add_action( 'admin_init', array( $this, 'add_fields' ) );
 
